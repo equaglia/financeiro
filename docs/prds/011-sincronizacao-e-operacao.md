@@ -59,7 +59,7 @@ Como membro da família, quero lançar e consultar tudo fora de casa, para usar 
 - O que foi feito offline fica guardado no aparelho até a próxima sincronização.
 
 **Edge cases:**
-- Aparelho sem sincronizar há **7 dias** → aviso discreto: "sincronize em casa; X lançamentos só estão neste aparelho" *(premissa — confirme ou corrija o prazo)*.
+- Aparelho sem sincronizar há **7 dias** → aviso discreto: "sincronize em casa; X lançamentos só estão neste aparelho".
 - Aparelho com pouco espaço → o app avisa antes de ficar sem espaço; nunca descarta lançamentos não sincronizados.
 
 ### US02: Sincronizar automaticamente em casa
@@ -174,7 +174,7 @@ Como administrador, quero um painel com o estado do servidor, dos aparelhos e da
 Como administrador, quero exportar todos os dados da família num formato aberto, para nunca ficar preso ao app, como aconteceu com o Minhas Economias.
 
 **Rules:**
-- Exportação completa (contas, cartões, lançamentos, categorias, orçamentos, investimentos) em formato aberto e legível por planilha *(premissa — confirme ou corrija os formatos)*.
+- Exportação completa (contas, cartões, lançamentos, categorias, orçamentos, investimentos) em formato aberto e legível por planilha.
 - Feita no computador, salva onde o administrador escolher; nada é enviado para fora.
 
 **Edge cases:**
