@@ -1,7 +1,7 @@
 ---
 prd_number: "006"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: alta
 created: 2026-11-03
 issue: ""
@@ -36,16 +36,16 @@ references:
 
 1. Sem cotação automática: o valor atual é digitado ou importado. Motivo: decisão do casal (rodada 2, opção b); nenhuma integração externa.
 2. Rendimento = variação do valor atual descontados aportes e resgates. Motivo: dedução validada na consolidação do brainstorm.
-3. A valorização dentro da aplicação **não é receita do mês**; aparece no relatório de investimentos e no patrimônio. Já o rendimento **pago em dinheiro numa conta** (juros creditados na conta corrente, dividendos pagos) é receita, categoria Rendimentos *(premissa — confirme ou corrija)*. Motivo: senão o orçamento do mês oscila com o mercado.
+3. A valorização dentro da aplicação **não é receita do mês**; aparece no relatório de investimentos e no patrimônio. Já o rendimento **pago em dinheiro numa conta** (juros creditados na conta corrente, dividendos pagos) é receita, categoria Rendimentos. Motivo: senão o orçamento do mês oscila com o mercado.
 4. Aplicar e resgatar entre a conta corrente e a conta de investimento é transferência (PRD 002, PRD 003).
 
 ### Fora do escopo
 
 - Cotação automática de ações, fundos ou Tesouro (decidido no brainstorm).
 - Preço médio, ganho de capital, imposto sobre ações e DARF (IR de renda variável fora do escopo, decidido na rodada 6).
-- Recomendação de investimento, comparação com índices (CDI, IPCA, Ibovespa) *(premissa — confirme ou corrija)*.
+- Recomendação de investimento, comparação com índices (CDI, IPCA, Ibovespa).
 - Detalhar aplicações nas contas do exterior: só o saldo total em dólar (PRD 002).
-- Simulação de aposentadoria com a previdência *(premissa — confirme ou corrija)*.
+- Simulação de aposentadoria com a previdência.
 
 ## 3. Funcionalidades
 
@@ -55,14 +55,14 @@ Como administrador, quero cadastrar cada aplicação dentro da conta de investim
 
 **Rules:**
 - Dados: conta de investimento, **tipo** (CDB, LCI/LCA, Tesouro, fundo, ação, previdência, outro), **nome** (ex.: "CDB Banco X 2028"), data de início.
-- Opcionais: emissor ou administrador e **CNPJ** (usado em bens e direitos, PRD 010), indexador e taxa contratada (só informativos), **vencimento**, quantidade (ações e fundos) *(premissa — confirme ou corrija)*.
+- Opcionais: emissor ou administrador e **CNPJ** (usado em bens e direitos, PRD 010), indexador e taxa contratada (só informativos), **vencimento**, quantidade (ações e fundos).
 - Toda conta de investimento tem também o **saldo disponível**, que não é aplicação.
 - O dono da aplicação é o dono da conta (família, filho ou administrada, PRD 002).
 
 **Edge cases:**
-- Aplicação comprada antes do início do app ou da migração → cadastrada com o valor naquela data como aporte inicial *(premissa — confirme ou corrija)*.
+- Aplicação comprada antes do início do app ou da migração → cadastrada com o valor naquela data como aporte inicial.
 - Mesmo título comprado em datas diferentes → pode ser uma aplicação só (com vários aportes) ou várias; o casal escolhe.
-- Aplicação transferida entre corretoras (portabilidade) → resgate numa conta e aporte na outra, ligados *(premissa — confirme ou corrija)*.
+- Aplicação transferida entre corretoras (portabilidade) → resgate numa conta e aporte na outra, ligados.
 
 ### US02: Registrar aportes e resgates
 
@@ -71,8 +71,8 @@ Como administrador, quero registrar quando aplico e resgato, para que o rendimen
 **Rules:**
 - **Aporte**: sai do saldo disponível da conta de investimento e entra na aplicação. **Resgate**: sai da aplicação e volta ao saldo disponível.
 - Dinheiro entre a conta corrente e o saldo disponível da conta de investimento é **transferência** (PRD 003, US02).
-- Atalho: aplicar direto da conta corrente numa aplicação registra as duas coisas de uma vez *(premissa — confirme ou corrija)*.
-- Resgate tem valor bruto e, opcionalmente, imposto e taxas retidos; o líquido volta ao disponível *(premissa — confirme ou corrija)*.
+- Atalho: aplicar direto da conta corrente numa aplicação registra as duas coisas de uma vez.
+- Resgate tem valor bruto e, opcionalmente, imposto e taxas retidos; o líquido volta ao disponível.
 - Aportes e resgates podem vir da importação do extrato da corretora (PRD 004).
 
 **Edge cases:**
@@ -86,7 +86,7 @@ Como administrador, quero informar o valor atual de cada aplicação, para ver q
 
 **Rules:**
 - Valor atual numa data, por aplicação, digitado ou importado (PRD 004).
-- A atualização de referência é a do **fechamento do mês** (último dia útil), alinhada com o patrimônio (PRD 008) *(premissa — confirme ou corrija)*.
+- A atualização de referência é a do **fechamento do mês** (último dia útil), alinhada com o patrimônio (PRD 008).
 - Tela de atualização em lote: todas as aplicações de uma conta numa tela, com o último valor ao lado, para copiar do extrato.
 - O saldo da conta de investimento = saldo disponível + soma dos valores atuais das aplicações.
 - A atualização conta como conferência da conta com o extrato (PRD 002, US08) quando o total bate.
@@ -102,7 +102,7 @@ Como administrador, quero ver quanto cada aplicação rendeu no mês, no ano e d
 
 **Rules:**
 - Rendimento no período = valor final − valor inicial − aportes + resgates.
-- Mostrado em reais e em **percentual simples** sobre o valor inicial mais os aportes do período *(premissa — confirme ou corrija; percentual ponderado pelo tempo é mais exato, mas mais difícil de entender)*.
+- Mostrado em reais e em **percentual simples** sobre o valor inicial mais os aportes do período.
 - Por aplicação, por conta, por tipo e total da família.
 - O rendimento da valorização **não entra** nas receitas do mês (decisão 3); juros e dividendos pagos em conta entram como receita.
 
@@ -122,7 +122,7 @@ Como administrador, quero acompanhar cada plano de previdência, para saber quan
 
 **Edge cases:**
 - Contribuição descontada em folha (sem passar pela conta) → registrada direto no plano (PRD 002).
-- Portabilidade entre planos → resgate de um e aporte no outro, sem ser contribuição nova *(premissa — confirme ou corrija)*.
+- Portabilidade entre planos → resgate de um e aporte no outro, sem ser contribuição nova.
 - Resgate de previdência → vai para o saldo disponível ou para a conta corrente; imposto retido registrado como no resgate de aplicação.
 
 ### US06: Ver a carteira
@@ -137,7 +137,7 @@ Como administrador, quero ver todos os investimentos juntos, para saber quanto a
 - O dependente vê só os investimentos próprios, se tiver (PRD 001).
 
 **Edge cases:**
-- Aplicações com valor desatualizado há mais de 2 meses → destacadas *(premissa — confirme ou corrija)*.
+- Aplicações com valor desatualizado há mais de 2 meses → destacadas.
 - Conta de investimento sem aplicações → aparece só com o saldo disponível.
 
 ### US07: Vencimentos e lembretes de atualização
@@ -145,8 +145,8 @@ Como administrador, quero ver todos os investimentos juntos, para saber quanto a
 Como administrador, quero ser lembrado de vencimentos e de atualizar os valores no fim do mês, para não deixar a carteira desatualizada.
 
 **Rules:**
-- Aplicações com vencimento aparecem numa lista dos **próximos vencimentos** (90 dias) *(premissa — confirme ou corrija)*.
-- No início de cada mês, o app lembra de atualizar os valores do fechamento do mês anterior, com a lista do que falta *(premissa — confirme ou corrija)*.
+- Aplicações com vencimento aparecem numa lista dos **próximos vencimentos** (90 dias).
+- No início de cada mês, o app lembra de atualizar os valores do fechamento do mês anterior, com a lista do que falta.
 - Vencimento passado sem resgate registrado → destacado.
 
 **Edge cases:**
@@ -249,3 +249,4 @@ Conta corrente ──transferência──▶ Saldo disponível (conta de investi
 - **2026-11-03:** Investimentos por aplicação, sem cotação automática. Motivo: decisão do casal (rodada 2, opção b).
 - **2026-11-03:** Rendimento pela variação do valor descontados aportes e resgates. Motivo: dedução validada na consolidação.
 - **2026-11-03:** `depends_on: ["001", "002", "003"]`. Critério: permissões (001), contas de investimento e previdência (002), transferências (003). A importação (004) é alternativa à digitação, não pré-requisito.
+- **2026-11-03:** 1ª revisão do casal: as 14 premissas foram aceitas como estão (inclusive: valorização não é receita do mês; rendimento em percentual simples; atualização de referência no fechamento do mês). Marcas removidas; status mantido em `rascunho` até a revisão final.
