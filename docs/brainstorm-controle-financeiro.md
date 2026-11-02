@@ -21,12 +21,12 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Perfil | Quem | O que faz |
 |---|---|---|
 | Administrador | o casal (2 pessoas) | lança, importa, categoriza, analisa, administra contas, cartões e investimentos |
-| Dependente | 2 filhos | anota e categoriza as próprias compras, acompanha limite ou mesada; vê **todas as compras do próprio cartão adicional** e **a própria conta individual**; não vê nada além do que é dele |
+| Dependente | 2 filhos | anota e categoriza as próprias compras, acompanha limite ou semanada; vê **todas as compras do próprio cartão adicional** e **a própria conta individual**; não vê nada além do que é dele |
 
 - Todas as despesas são comuns: não há separação "dinheiro dele / dela" nem rateio.
 - Contas correntes, contas de investimento e cartões de crédito são conjuntos.
 - Os filhos têm cartões adicionais (dependentes) no cartão do casal. Hoje não se interessam pelo app; o casal gostaria que passassem a usar.
-- Decidido: hoje cada filho já tem **conta individual própria**, onde recebe a **mesada por Pix**, e o cartão adicional tem **limite mensal**.
+- Decidido: hoje cada filho já tem **conta individual própria**, onde recebe a **semanada por Pix**, e o cartão adicional tem **limite mensal**.
 - Decidido: **as contas dos filhos entram no app**. No futuro podem ter também **contas correntes e de investimento próprias**.
 - Decidido: **o que o filho faz com o dinheiro da conta dele é dele**: a movimentação das contas dos filhos não entra nos relatórios da família.
 - Decidido: **o casal vê as contas dos filhos** (saldo e movimentação), separadas dos relatórios da família. Consequência: cada conta tem um dono (o casal ou um filho), e o que cada usuário vê depende disso. Os relatórios da família não incluem as contas dos filhos.
@@ -35,12 +35,19 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 
 - Cadastrar e acompanhar **contas correntes**, **cartões de crédito** (com cartões adicionais) e **contas de investimento**.
 - Decidido (nível b): **investimentos por aplicação** (CDB, fundo, ações, Tesouro etc.) com aportes, resgates e rendimento. Sem cotação automática: o valor atual é informado à mão ou importado. Descartados: (a) só saldo por conta, pouco para análise; (c) cotação automática, dependência externa.
-- **Dependentes:** anotar e categorizar as próprias compras no cartão adicional; acompanhar o consumo do mês contra o limite do cartão adicional; acompanhar a mesada.
+- **Dependentes:** anotar e categorizar as próprias compras no cartão adicional; acompanhar o consumo do mês contra o limite do cartão adicional; acompanhar a semanada.
   - Decidido (consolidação): o filho pode **registrar a compra no celular na hora**; quando o casal importa a fatura, a compra importada é conciliada com a registrada pelo filho (identificada pelo cartão adicional). Se errado: o filho só categoriza depois da importação.
   - Decidido (consolidação): o limite mensal do cartão adicional é **cadastrado pelo casal** no app; o app mostra quanto já foi usado e avisa perto do limite. O app não bloqueia nada (quem bloqueia é o banco).
-  - Decidido: o **Pix da mesada é despesa da família** (não é transferência interna) e receita na conta do filho.
+  - Decidido: o **Pix da semanada é despesa da família** (não é transferência interna) e receita na conta do filho.
   - Decidido: **as compras no cartão adicional são despesas da família** e entram nos relatórios do casal (o casal paga a fatura).
 - **Lançamento manual** de receitas e despesas (como no Minhas Economias).
+- Decidido (análise da exportação do Minhas Economias, 2026-11-03):
+  - **Semanada**, não mesada: os filhos recebem por semana (categoria "Semanada Filhos"). Termo trocado em todos os documentos; as regras continuam as mesmas.
+  - **Contas PJ ficam fora da 1ª versão** (a família tinha conta e investimento de uma PJ no Minhas Economias).
+  - **Contas administradas**: o casal administra dinheiro de parentes (investimento em nome de parente; espólio cujo dinheiro passa pela conta do BB). Hoje isso aparece como se fosse da família, "e isso não é bom". Entra no app como conta administrada, fora dos relatórios e do patrimônio da família (PRD 002, US12).
+  - **Dinheiro em espécie por pessoa**, inclusive dos filhos.
+  - Histórico desde **abril de 2017**, sempre com as mesmas 5 colunas (formato em `docs/formatos/minhas-economias-exportacao.md`).
+  - Hierarquia de categorias não vem na exportação; o casal prefere que seja proposta e ajustada (`docs/categorias-iniciais.md`).
 - Decidido (revisão do PRD 002, 2026-11-03): **dinheiro em espécie** (carteira) como tipo de conta, como no Minhas Economias. Contas da XP são só de investimento (a família não usa a conta corrente da XP). A família sempre paga a fatura inteira.
 - **Importação opcional** de extratos e faturas em **CSV e PDF**.
 - Decidido: **relatórios e análises**: gastos por categoria no mês; evolução ao longo dos meses; orçamento planejado x realizado; patrimônio total.
@@ -129,18 +136,18 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Operação o mais automática possível | Decidido | resposta 1, rodada 2 | 2026-11-02 |
 | App funciona offline e sincroniza com o servidor (local-first) | Decidido (consolidação) | consequência de servidor nem sempre ligado | 2026-11-02 |
 | Servidor filtra os dados por usuário | Decidido (consolidação) | consequência de "filhos não veem além do que é deles" | 2026-11-02 |
-| Filhos anotam/categorizam, acompanham limite ou mesada, só veem o que é deles | Decidido | resposta 2, rodada 2 | 2026-11-02 |
+| Filhos anotam/categorizam, acompanham limite ou semanada, só veem o que é deles | Decidido | resposta 2, rodada 2 | 2026-11-02 |
 | Filhos poderão ter contas próprias no futuro | Decidido | resposta 2, rodada 2 | 2026-11-02 |
 | Investimentos por aplicação, sem cotação | Decidido | resposta 3, rodada 2 (opção b) | 2026-11-02 |
 | Android e Windows (sem iPhone) | Decidido | resposta 1, rodada 3 | 2026-11-02 |
 | Servidor num computador Windows de casa | Decidido | resposta 1, rodada 3 | 2026-11-02 |
 | Sincronização só no Wi-Fi de casa, sem acesso remoto | Decidido | resposta 2, rodada 3 | 2026-11-02 |
 | Servidor em segundo plano; sincronização automática ao chegar em casa | Decidido (consolidação) | operação automática | 2026-11-02 |
-| Filhos já têm conta própria (mesada por Pix) e limite mensal no cartão adicional | Decidido | resposta 3, rodada 3 | 2026-11-02 |
+| Filhos já têm conta própria (semanada por Pix) e limite mensal no cartão adicional | Decidido | resposta 3, rodada 3 | 2026-11-02 |
 | Filho registra a compra na hora; conciliada com a fatura importada | Decidido (consolidação) | estende a conciliação ao filho | 2026-11-02 |
 | Limite do cartão adicional cadastrado pelo casal; app avisa, não bloqueia | Decidido (consolidação) | o bloqueio é do banco | 2026-11-02 |
 | Contas dos filhos entram no app; movimentação delas fora dos relatórios da família | Decidido | resposta 1, rodada 4 | 2026-11-02 |
-| Mesada: despesa da família, receita do filho | Decidido | resposta 1, rodada 4 | 2026-11-02 |
+| Semanada: despesa da família, receita do filho | Decidido | resposta 1, rodada 4 | 2026-11-02 |
 | Compras do cartão adicional: despesa da família | Decidido | resposta 1, rodada 4 | 2026-11-02 |
 | Relatórios: categoria no mês, evolução, orçamento x realizado, patrimônio | Decidido | resposta 2, rodada 4 | 2026-11-02 |
 | Cartão em regime de caixa (mês do pagamento da fatura) | Decidido | resposta 2, rodada 4 (substitui a inferência "data da compra") | 2026-11-02 |
@@ -179,7 +186,7 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - **Gerar o arquivo oficial da declaração:** descartado; só relatórios de apoio.
 - **Câmbio automático (PTAX do Banco Central):** descartado na rodada 5; o casal digita o câmbio.
 - **Regime de competência no cartão (compra no mês da compra):** descartado na rodada 4; vale o mês do pagamento.
-- **Mesada como transferência interna:** descartada na rodada 4; é despesa da família.
+- **Semanada como transferência interna:** descartada na rodada 4; é despesa da família.
 - **Acesso remoto ao servidor (túnel/VPN gratuito de terceiro):** descartado na rodada 3; sincronização só em casa.
 - **App para iPhone / PWA:** desnecessário; a família usa só Android.
 - **Cotação automática de investimentos:** descartada na rodada 2 (opção b).
@@ -189,7 +196,6 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 
 Aguardando o casal:
 
-- Período do histórico no Minhas Economias.
 - Amostras de extratos e faturas (BB, Santander, XP x2, BBPrev, exterior) e da exportação do Minhas Economias, com dados pessoais apagados. Ficam só na sessão; no repositório entra apenas a descrição do formato. Pedir quando chegar o PRD de importação.
 
 A verificar em fonte, com data (no PRD ou TRD correspondente):
@@ -214,7 +220,7 @@ Proposta de divisão em PRDs (`docs/prds/`), na ordem de dependência:
 | 006 Investimentos e previdência | aplicações, aportes, resgates, rendimento, saldo |
 | 007 Orçamento | planejado por categoria x realizado |
 | 008 Relatórios e patrimônio | categoria no mês, evolução, patrimônio com câmbio de fechamento |
-| 009 Filhos: limite e mesada | limite do cartão adicional por ciclo, mesada, aviso |
+| 009 Filhos: limite e semanada | limite do cartão adicional por ciclo, semanada, aviso |
 | 010 Apoio ao imposto de renda | despesas dedutíveis, bens e direitos, declaração conjunta |
 | 011 Sincronização e operação | comportamento offline, sincronização em casa, conflitos, cópia de segurança, instalação e recuperação (lado do usuário) |
 

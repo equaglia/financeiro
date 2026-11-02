@@ -1,7 +1,7 @@
 ---
 prd_number: "002"
 status: rascunho
-revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03, exceto US12 (contas administradas, acrescentada depois e aguardando revisão); falta a revisão final"
 priority: crítica
 created: 2026-11-03
 issue: ""
@@ -16,17 +16,17 @@ references:
 ## 1. Contexto
 
 - **Produto/área**: controle financeiro da família (casal e dois filhos). Base: `docs/brainstorm-controle-financeiro.md`.
-- **Estado atual**: a família tem contas correntes e de investimento no Banco do Brasil e no Santander, duas contas na XP Investimentos, previdência no BBPrev e contas em dólar no exterior. Os cartões são Visa e Mastercard do Santander e um Visa em cada conta da XP; os filhos têm cartões adicionais com limite mensal e uma conta individual cada, onde recebem a mesada por Pix. Hoje só uma planilha simples registra receitas e despesas, sem saldos por conta nem faturas.
+- **Estado atual**: a família tem contas correntes e de investimento no Banco do Brasil e no Santander, duas contas na XP Investimentos, previdência no BBPrev e contas em dólar no exterior. Os cartões são Visa e Mastercard do Santander e um Visa em cada conta da XP; os filhos têm cartões adicionais com limite mensal e uma conta individual cada, onde recebem a semanada por Pix. Hoje só uma planilha simples registra receitas e despesas, sem saldos por conta nem faturas.
 - **Problema**: lançamentos, importação, orçamento, relatórios, patrimônio e IR precisam saber **onde** o dinheiro está e **de quem** é cada conta. Sem o cadastro de contas e cartões, com faturas por ciclo, não há como aplicar o regime de caixa do cartão nem separar o que é dos filhos.
 
-> Contexto técnico em `docs/trd.md`. Aplicações dentro das contas de investimento e previdência: PRD 006. Câmbio de fechamento e patrimônio: PRD 008. Limite e mesada dos filhos: PRD 009.
+> Contexto técnico em `docs/trd.md`. Aplicações dentro das contas de investimento e previdência: PRD 006. Câmbio de fechamento e patrimônio: PRD 008. Limite e semanada dos filhos: PRD 009.
 
 ## 2. Solução Proposta
 
 ### Visão de produto
 
 - Um cadastro único com todos os lugares onde a família tem dinheiro ou dívida: contas correntes, contas de investimento, previdência, contas no exterior, **dinheiro em espécie** e cartões de crédito.
-- Cada conta tem **dono** (a família ou um filho) e **moeda** (real ou dólar); isso define quem vê (PRD 001) e o que entra nos relatórios da família.
+- Cada conta tem **dono** (a família, um filho ou um terceiro cujo dinheiro o casal **administra**) e **moeda** (real ou dólar); isso define quem vê (PRD 001) e o que entra nos relatórios da família.
 - Cada cartão tem titular, **cartões adicionais ligados a cada filho** e **faturas por ciclo** (fechamento e vencimento).
 - O **pagamento da fatura** é uma transferência da conta de pagamento (corrente ou investimento) para o cartão; é ele que marca o mês em que as compras daquela fatura contam (regime de caixa).
 - O saldo de cada conta pode ser **conferido com o extrato**, e diferenças viram um ajuste visível.
@@ -42,6 +42,7 @@ references:
 ### Fora do escopo
 
 - Empréstimos, financiamentos e consórcios como tipo de conta.
+- Contas de pessoa jurídica (PJ): fora da 1ª versão (decisão do casal, 2026-11-03).
 - Moedas além de real e dólar (decidido no brainstorm: hoje só dólar).
 - Cotação automática do dólar (decidido no brainstorm: câmbio digitado, PRD 008).
 - Consulta de saldo ou limite direto no banco (sem Open Finance).
@@ -100,12 +101,12 @@ Como administrador, quero cadastrar a conta individual de cada filho como dele, 
 **Rules:**
 - O dono da conta é o filho. O casal cadastra; o filho não cria contas (PRD 001).
 - A conta do filho fica **fora** dos relatórios, do orçamento e do patrimônio da família; o casal a vê numa área separada (PRD 001, US05).
-- A mesada por Pix sai da conta da família como **despesa da família** e entra na conta do filho como **receita do filho** (decidido no brainstorm). Detalhes no PRD 009.
+- A semanada por Pix sai da conta da família como **despesa da família** e entra na conta do filho como **receita do filho** (decidido no brainstorm). Detalhes no PRD 009.
 - Contas correntes e de investimento próprias que os filhos venham a ter usam o mesmo cadastro, com o filho como dono.
 
 **Edge cases:**
 - Conta muda de dono (família → filho ou filho → família) → o histórico passa junto e a visibilidade muda na próxima sincronização (PRD 001); os relatórios da família passam a excluir ou incluir **todo o histórico** da conta.
-- Transferência entre a conta da família e a do filho que não é mesada (ex.: reembolso) → o casal escolhe se é despesa da família ou não, pela categoria.
+- Transferência entre a conta da família e a do filho que não é semanada (ex.: reembolso) → o casal escolhe se é despesa da família ou não, pela categoria.
 
 ### US05: Cadastrar cartão de crédito e cartões adicionais
 
@@ -212,6 +213,23 @@ Como administrador, quero ter uma conta de dinheiro em espécie (carteira), para
 - Gasto em dinheiro maior que o saldo da carteira → aceito, com aviso de saldo negativo (provavelmente faltou lançar um saque).
 - Saque que aparece no extrato importado da conta corrente (PRD 004) → reconhecido como transferência para a carteira quando o casal confirmar; sem carteira cadastrada, o app sugere criar uma.
 
+### US12: Separar o dinheiro que o casal administra para outras pessoas
+
+Como administrador, quero registrar as contas e o dinheiro que administro para parentes (investimento de um parente, espólio), para que não apareçam como se fossem da família.
+
+**Rules:**
+- Uma conta pode ter como dono um **terceiro administrado** (nome do parente ou do espólio). Qualquer tipo de conta serve (corrente, investimento, dinheiro).
+- Contas administradas ficam **fora** dos relatórios, do orçamento e do patrimônio da família, numa área separada visível só ao casal *(premissa — confirme ou corrija)*.
+- Dinheiro de terceiro que **passa pela conta da família** (ex.: o espólio recebe e paga pela conta do BB): o lançamento na conta da família é uma **transferência** entre a conta da família e a conta administrada, não despesa nem receita da família *(premissa — confirme ou corrija)*. O saldo da conta administrada mostra quanto do dinheiro na conta da família é do terceiro.
+- Receitas e despesas do terceiro (ex.: rendimento do investimento do parente, custas do espólio) são lançadas na conta administrada, com categorias, e aparecem num relatório próprio dela *(premissa — confirme ou corrija)*.
+- Dependentes não veem contas administradas.
+- No IR da família, contas administradas não entram em bens e direitos nem em despesas dedutíveis *(premissa — confirme ou corrija)*.
+
+**Edge cases:**
+- Lançamento que mistura família e terceiro (ex.: pagamento único que cobre as duas partes) → dividido (PRD 003, US08): uma parte despesa da família, outra transferência para a conta administrada.
+- Administração encerrada (espólio partilhado) → a conta administrada é encerrada com saldo zero (US09); o histórico fica.
+- Histórico do Minhas Economias com dinheiro de terceiro misturado nas contas da família → a migração permite reclassificar por categoria (ex.: tudo da categoria do espólio vira transferência para a conta administrada) (PRD 005).
+
 ## 4. Fluxo de Negócio
 
 ```
@@ -246,6 +264,7 @@ Antes ou depois do dia de fechamento?
 | Pagamento da fatura não aparece como despesa | não contar o gasto duas vezes | total de despesas do mês não muda ao registrar o pagamento além das compras |
 | Cada compra mostra o cartão que a fez (titular ou adicional) | filho vê só as dele; casal vê gastos por filho | fatura com compras do titular e dos dois adicionais: cada uma ligada ao cartão certo |
 | Conta do filho fora dos relatórios e do patrimônio da família | "o que o filho faz é dele" | movimentar a conta do filho: relatórios da família não mudam |
+| Dinheiro administrado para terceiros fora dos relatórios e do patrimônio da família | o dinheiro do parente não é da família | receber e pagar pelo espólio na conta do BB: despesas, receitas e patrimônio da família não mudam; saldo da conta administrada mostra a parte do terceiro |
 | Saldo calculado comparado com o saldo do extrato, com a diferença visível | descobrir lançamento faltante | informar saldo diferente: diferença mostrada; criar ajuste: conta conferida |
 | Conta em dólar mostra saldo em dólar | controle simplificado do exterior | lançar extrato mensal: saldo em dólar com a data do extrato |
 | Saque é transferência para a carteira e gasto em dinheiro é despesa na carteira | controle do dinheiro em espécie, como no Minhas Economias | sacar R$ 200 e gastar R$ 50: despesas do mês +50, saldo da carteira 150 |
@@ -287,15 +306,16 @@ Antes ou depois do dia de fechamento?
 
 **Aprovador:** casal
 
-### Milestone 3: Contas dos filhos e do exterior
+### Milestone 3: Contas dos filhos, do exterior e administradas
 
-**Por que é um marco:** o app cobre todas as contas da família, inclusive as dos filhos (separadas) e as em dólar.
+**Por que é um marco:** o app cobre todas as contas da família, inclusive as dos filhos e as administradas para parentes (separadas) e as em dólar.
 
-**Funcionalidades:** US03, US04
+**Funcionalidades:** US03, US04, US12
 
 **Checklist de aceite** (marcado pelo Aprovador após a implementação):
 - [ ] Conta do filho fora dos relatórios e do patrimônio da família
 - [ ] Conta em dólar mostra saldo em dólar
+- [ ] Dinheiro administrado para terceiros fora dos relatórios e do patrimônio da família
 
 **Aprovador:** casal
 
@@ -328,3 +348,4 @@ Antes ou depois do dia de fechamento?
 - **2026-11-03:** `depends_on: ["001"]`. Critério: o dono da conta e a visibilidade por perfil vêm do PRD 001. O PRD 003 (lançamentos) depende deste, não o contrário.
 - **2026-11-03:** Revisão do casal: sempre pagam a fatura inteira (pagamento parcial vira exceção); contas da XP são de investimento, sem conta corrente; previdência com tipo de plano (só PGBL é dedutível) e participante; **dinheiro em espécie entra no escopo** como tipo de conta (US11), como no Minhas Economias; demais premissas aceitas. Status mantido em `rascunho` até a revisão final de todos os PRDs (1ª revisão aprovada).
 - **2026-11-03:** A conta de pagamento do cartão pode ser corrente ou de investimento. Motivo: os cartões da XP são da conta de investimento, já que a família não usa conta corrente na XP.
+- **2026-11-03:** Após a análise da exportação do Minhas Economias: contas PJ fora da 1ª versão; **contas administradas** para terceiros (US12), porque hoje o dinheiro do parente aparece como da família; "mesada" passa a "semanada"; dinheiro em espécie por pessoa, inclusive filhos (já coberto pela US11). US12 aguarda a 1ª revisão.

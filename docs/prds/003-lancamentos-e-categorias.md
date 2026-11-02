@@ -35,7 +35,7 @@ references:
 ### Decisões de produto
 
 1. Transferência entre contas da família não é despesa nem receita. Motivo: decidido no brainstorm; senão o gasto conta duas vezes.
-2. Mesada para os filhos é despesa da família (categoria própria), não transferência. Motivo: decidido no brainstorm.
+2. Semanada para os filhos é despesa da família (categoria própria), não transferência. Motivo: decidido no brainstorm.
 3. Compra no cartão conta no mês do pagamento da fatura. Motivo: decidido no brainstorm (regime de caixa); a data real da compra fica guardada.
 4. Dados de IR são pedidos na hora do lançamento, não no fim do ano. Motivo: em fevereiro ninguém lembra o CPF do dentista de abril.
 5. Lançamento previsto não conta como realizado: só entra no realizado quando confirmado ou conciliado com a importação. Motivo: orçamento x realizado precisa refletir o que aconteceu.
@@ -78,7 +78,7 @@ Como administrador, quero registrar transferências entre contas da família, pa
 - Casos: transferência entre correntes; **saque** (corrente → dinheiro em espécie); **aplicação** e **resgate** (corrente ↔ investimento); **contribuição de previdência** (corrente → previdência); **pagamento de fatura** (conta de pagamento → cartão, PRD 002); remessa ao exterior (reais → dólares, com os dois valores).
 - Transferência não tem categoria e não entra em despesas, receitas nem orçamento.
 - Exceção: contribuição para previdência **PGBL** também aparece como despesa dedutível de previdência no relatório do IR (PRD 002, PRD 010), sem entrar nas despesas do mês.
-- Transferência da família para a conta de um filho: o casal escolhe se é **mesada** (despesa da família, categoria Mesada) ou outro tipo de despesa; nunca é transferência neutra, porque a conta do filho fica fora da família (PRD 002).
+- Transferência da família para a conta de um filho: o casal escolhe se é **semanada** (despesa da família, categoria Semanada) ou outro tipo de despesa; nunca é transferência neutra, porque a conta do filho fica fora da família (PRD 002).
 
 **Edge cases:**
 - Transferência importada só de um lado (ex.: extrato da corrente mostra a aplicação, mas o extrato da corretora ainda não foi importado) → fica registrada; a importação do outro lado é conciliada com ela (PRD 004).
@@ -139,11 +139,11 @@ Como administrador, quero editar, criar e reorganizar categorias e subcategorias
 **Rules:**
 - Dois níveis: categoria e subcategoria. Lançamento pode usar só a categoria ou a subcategoria.
 - Cada categoria tem **tipo**: despesa ou receita.
-- Ponto de partida: as categorias da exportação do Minhas Economias (PRD 005). Antes da migração, o app traz uma lista inicial padrão *(premissa — confirme ou corrija)*.
+- Ponto de partida: as categorias da exportação do Minhas Economias, agrupadas conforme `docs/categorias-iniciais.md` (proposta a ser ajustada pelo casal; usada também na migração, PRD 005).
 - O casal pode: criar, renomear, mover subcategoria para outra categoria, **juntar** duas categorias (os lançamentos passam para a que fica) e **desativar** (some da escolha, continua no histórico).
 - Excluir de vez só categoria sem lançamentos.
 - Categoria pode ser marcada como **dedutível no IR**, com o tipo: saúde, educação ou previdência (US07).
-- Categoria fixa **Mesada** (despesa) e categoria fixa de **ajuste de saldo** (fora de despesa e receita, PRD 002) *(premissa — confirme ou corrija os nomes)*.
+- Categoria fixa **Semanada** (despesa) e categoria fixa de **ajuste de saldo** (fora de despesa e receita, PRD 002) *(premissa — confirme ou corrija os nomes)*.
 - O dependente usa as categorias da família, sem editar (PRD 001).
 
 **Edge cases:**
@@ -205,7 +205,7 @@ Novo lançamento
    ▼
 Entre contas da família?
    ├── sim ──▶ Transferência (sem categoria; fora de despesas e receitas)
-   │              └── destino é conta de filho? ──▶ não é transferência: despesa (ex.: Mesada)
+   │              └── destino é conta de filho? ──▶ não é transferência: despesa (ex.: Semanada)
    └── não ──▶ Despesa ou receita, com categoria
                   │
                   ▼
@@ -228,7 +228,7 @@ Entre contas da família?
 |----------|------------------|-----------------------------|
 | Lançar uma despesa no celular leva até 15 s com categoria sugerida | o casal lança na hora; se for lento, volta a esquecer *(premissa — confirme ou corrija o limiar)* | cronometrar um lançamento repetido de favorecido conhecido |
 | Transferências (saque, aplicação, pagamento de fatura) não alteram despesas e receitas | não contar duas vezes | registrar cada tipo: totais do mês não mudam |
-| Mesada para o filho entra como despesa da família | decidido no brainstorm | transferir para a conta do filho como mesada: despesa na categoria Mesada |
+| Semanada para o filho entra como despesa da família | decidido no brainstorm | transferir para a conta do filho como semanada: despesa na categoria Semanada |
 | Compra parcelada em 10x gera 10 parcelas, cada uma na fatura certa | parcelas futuras visíveis | lançar compra 10x: dez faturas com uma parcela cada |
 | Compra no cartão aparece no mês do pagamento da fatura | regime de caixa | compra em 25/03, fatura paga em 10/04: aparece em abril |
 | Conta fixa gera previstos dos próximos 12 meses e é confirmada pelo valor real | comprometimento futuro | cadastrar luz; lançar o valor real: previsto confirmado com o valor real |
@@ -255,7 +255,7 @@ Entre contas da família?
 **Checklist de aceite** (marcado pelo Aprovador após a implementação):
 - [ ] Lançar uma despesa no celular leva até 15 s com categoria sugerida
 - [ ] Transferências (saque, aplicação, pagamento de fatura) não alteram despesas e receitas
-- [ ] Mesada para o filho entra como despesa da família
+- [ ] Semanada para o filho entra como despesa da família
 - [ ] Compra no cartão aparece no mês do pagamento da fatura
 - [ ] Juntar duas categorias move todos os lançamentos
 - [ ] Lançamento dividido soma o total e cada parte vai para a sua categoria
@@ -304,14 +304,14 @@ Entre contas da família?
 
 ## 8. Referências
 
-- `docs/brainstorm-controle-financeiro.md` — regime de caixa, transferências, mesada, categorias, recorrentes, IR.
+- `docs/brainstorm-controle-financeiro.md` — regime de caixa, transferências, semanada, categorias, recorrentes, IR.
 - `docs/prds/001-usuarios-perfis-e-acesso.md` — o que o dependente lança e edita.
 - `docs/prds/002-contas-e-cartoes.md` — contas, cartões, faturas, pagamento e conta de pagamento.
 
 ## 9. Registro de Decisões
 
 - **2026-11-03:** Três tipos de lançamento (despesa, receita, transferência) e mês de referência pelo regime de caixa no cartão. Motivo: decisões do brainstorm (rodadas 3 e 4).
-- **2026-11-03:** Mesada é despesa da família, nunca transferência neutra. Motivo: decisão do casal (rodada 4); a conta do filho fica fora da família.
+- **2026-11-03:** Semanada é despesa da família, nunca transferência neutra. Motivo: decisão do casal (rodada 4); a conta do filho fica fora da família.
 - **2026-11-03:** Dados de IR pedidos no lançamento, com possibilidade de completar depois. Motivo: decisão do casal (rodada 6) de registrar CPF/CNPJ e atendido.
 - **2026-11-03:** Previsto não conta como realizado. Motivo: orçamento x realizado precisa refletir o que aconteceu (validado na consolidação).
 - **2026-11-03:** `depends_on: ["001", "002"]`. Critério: o lançamento pressupõe perfis e permissões (001) e contas, cartões e faturas (002).
