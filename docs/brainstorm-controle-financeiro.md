@@ -1,7 +1,7 @@
 # Brainstorm: controle financeiro familiar
 
 **Lente:** especificação de projeto de desenvolvimento
-**Última sessão:** 2026-11-02 (rodada 6 de perguntas em andamento)
+**Última sessão:** 2026-11-02 (consolidação apresentada; aguardando validação)
 
 Documento de trabalho: guarda decisões, premissas, alternativas descartadas e pendências. É a base para os PRDs (`docs/prds/`) e o TRD (`docs/trd.md`), não a especificação final. Uma sessão nova retoma daqui (seção "Estados" e "Pendências").
 
@@ -47,7 +47,13 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - Decidido: **contas no exterior com controle simplificado**: lançamento a partir do extrato mensal, saldo em **dólar**; no patrimônio total, convertido pelo **câmbio do fechamento do mês**.
 - Decidido: **previdência** (BBPrev) entra como tipo de conta, acompanhada pelo saldo e pelas contribuições do extrato, e somada ao patrimônio.
 - Decidido: **migração do histórico** a partir de uma **exportação do Minhas Economias** (período a verificar pelo casal; amostra a pedir mais tarde).
-- Decidido: **apoio à declaração anual do IR** (o que exatamente: rodada 6). Inferido: o app **gera relatórios para ajudar a preencher**, não gera o arquivo oficial da Receita nem transmite a declaração. Se errado: o escopo cresce muito e passa a depender das regras e do programa da Receita de cada ano.
+- Decidido: **apoio à declaração anual do IR**, com **relatórios para ajudar a preencher** (não gera o arquivo oficial da Receita nem transmite a declaração; confirmado na rodada 6):
+  - **Despesas dedutíveis** (saúde, educação, previdência): o lançamento guarda **CPF ou CNPJ do prestador** e **quem foi atendido** (titular, cônjuge ou filho).
+  - **Bens e direitos**: saldo de cada conta e aplicação em 31/12 (inclusive exterior).
+  - **Declaração conjunta**, com os **filhos como dependentes**.
+  - Fora: rendimentos (isentos, exclusivos) e ganhos em renda variável / DARF (não escolhidos na rodada 6).
+- Decidido: **categorias com subcategorias**; as importadas do Minhas Economias são aproveitadas e podem ser **editadas**, e o casal **cria novas**.
+- Decidido: **contas fixas (recorrentes)** cadastradas e **parcelas futuras** visíveis. Inferido: a partir delas o app mostra o **comprometimento dos próximos meses** e os lançamentos previstos ficam marcados como "previsto" até se realizarem.
 
 ### Regras de negócio levantadas (a confirmar nos PRDs)
 
@@ -78,6 +84,9 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - Inferido: como dois aparelhos podem alterar o mesmo dado offline, a sincronização precisa de **regra de conflito** definida (ex.: mesma transação editada nos dois celulares).
 - Inferido: **o servidor filtra o que cada usuário recebe** (serve: filhos não veem além do que é deles). Matriz decidida na rodada 5: casal vê tudo (família e filhos); cada filho vê só o próprio cartão adicional e a própria conta. O aparelho de um filho não pode receber a base da família inteira e esconder na tela; recebe só os dados dele. Restringe o desenho da sincronização (não é cópia integral para todos).
 - Inferido: **operação o mais automática possível**: instalação simples, atualização e cópia de segurança sem intervenção (serve: pedido do casal, servidor doméstico).
+- Decidido: **quem instala e mantém o servidor é o marido**, com alguma familiaridade técnica; desejável **automatizar tudo o que der** e, no resto, **instruções claras passo a passo** (serve: operação). Inferido: a especificação inclui um guia de instalação e de recuperação (o que fazer se o computador do servidor quebrar).
+- Decidido: **cópia de segurança no OneDrive ou em disco externo** (serve: não perder dados, custo zero). Inferido: **automática e periódica**, e **criptografada antes de sair do computador** quando for para o OneDrive (a Microsoft guarda só dados cifrados). Inferido: a restauração é testável e documentada. Se errado (cópia sem criptografia no OneDrive): os dados financeiros ficariam legíveis por terceiro, contra o requisito central.
+- Decidido: **o app pede PIN ao entrar** (serve: dados sensíveis, celulares dos filhos). Inferido: PIN por usuário em cada aparelho; os dados guardados no aparelho são **criptografados**; se um celular for perdido, o casal **revoga o aparelho** no servidor. Se errado: quem pegar o celular perdido lê os dados copiando os arquivos do app.
 - Inferido: no celular, app Android **instalado direto (APK)**, sem loja; no computador, app Windows ou web local. A escolha entre app nativo, multiplataforma ou web fica para o TRD (consultar versões atuais).
 - Decidido: **instituições hoje**: Banco do Brasil (corrente e investimento), Santander (corrente e investimento; cartões Visa e Mastercard), XP Investimentos (2 contas, cada uma com cartão Visa), BBPrev (previdência), contas no exterior (extrato mensal). A importação é especificada **por instituição e tipo de documento**. A verificar: que formatos (CSV, OFX, PDF) cada uma oferece hoje.
 - Inferido: **multimoeda mínima**: cada conta tem moeda (real ou dólar); conversão só para o patrimônio, pelo câmbio de fechamento mensal. Decidido: **câmbio digitado pelo casal** no fechamento do mês (sem busca automática; nenhuma integração externa). Decidido: hoje **só dólar** no exterior.
@@ -146,6 +155,18 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Apoio à declaração do IR | Decidido | rodada 5 | 2026-11-02 |
 | App gera relatórios de apoio, não o arquivo oficial da Receita | Inferido | escopo controlado | 2026-11-02 |
 | Regra de conversão de saldos no exterior para o IR | Em aberto | verificar fonte oficial (Receita) com data | 2026-11-02 |
+| App gera relatórios de apoio ao IR, não o arquivo oficial | Decidido | confirmado na rodada 6 | 2026-11-02 |
+| IR: despesas dedutíveis com CPF/CNPJ e paciente; bens e direitos | Decidido | resposta 1, rodada 6 | 2026-11-02 |
+| IR: declaração conjunta; filhos dependentes | Decidido | resposta 1, rodada 6 | 2026-11-02 |
+| IR: rendimentos e renda variável fora | Inferido | não escolhidos na rodada 6 | 2026-11-02 |
+| Categorias com subcategorias; importadas, editáveis, novas | Decidido | resposta 2, rodada 6 | 2026-11-02 |
+| Cópia de segurança no OneDrive ou disco externo | Decidido | resposta 2, rodada 6 | 2026-11-02 |
+| Cópia automática e criptografada antes do OneDrive | Inferido | privacidade | 2026-11-02 |
+| Contas fixas e parcelas futuras; comprometimento futuro | Decidido / Inferido | resposta 3, rodada 6; comprometimento é dedução | 2026-11-02 |
+| PIN ao entrar | Decidido | resposta 3, rodada 6 | 2026-11-02 |
+| Dados criptografados no aparelho; revogar aparelho perdido | Inferido | consequência do PIN e dos celulares dos filhos | 2026-11-02 |
+| Marido instala e mantém; automatizar e documentar passo a passo | Decidido | resposta 3, rodada 6 | 2026-11-02 |
+| Investimentos: valor atual digitado ou importado do extrato da corretora; rendimento = variação do saldo descontados aportes e resgates | Inferido | não perguntado; nível (b) da rodada 2 | 2026-11-02 |
 | Há histórico a migrar | Decidido | resposta 3, rodada 4 | 2026-11-02 |
 
 ## Alternativas descartadas
@@ -153,6 +174,8 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - **Continuar no Minhas Economias com Open Finance:** descartado pela privacidade.
 - **Dados só num servidor sempre ligado (cliente-servidor clássico):** descartado; o servidor pode ficar desligado.
 - **Servidor alugado (VPS) ou nuvem paga:** descartado; nenhum custo adicional.
+- **IR: rendimentos, ganhos em renda variável e DARF:** não escolhidos na rodada 6.
+- **Gerar o arquivo oficial da declaração:** descartado; só relatórios de apoio.
 - **Câmbio automático (PTAX do Banco Central):** descartado na rodada 5; o casal digita o câmbio.
 - **Regime de competência no cartão (compra no mês da compra):** descartado na rodada 4; vale o mês do pagamento.
 - **Mesada como transferência interna:** descartada na rodada 4; é despesa da família.
@@ -163,17 +186,34 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 
 ## Pendências
 
-Rodada 6 (perguntas feitas em 2026-11-02):
-
-1. **Imposto de renda:** em que o app deve ajudar (despesas dedutíveis com CPF/CNPJ do prestador; bens e direitos com saldo em 31/12; rendimentos; ganhos em renda variável)? Declaração conjunta ou separada, filhos como dependentes? Destrava: PRD do IR, dados extras nos lançamentos.
-2. **Categorias e cópia de segurança:** usar as categorias que vêm do Minhas Economias ou criar do zero (com subcategorias)? Onde guardar a cópia de segurança sem custo? Destrava: PRD de categorias, requisito de backup.
-3. **Recorrentes, segurança do celular e conhecimento técnico:** contas fixas e parcelas futuras previstas; bloqueio do app; quem instala e mantém o servidor. Destrava: PRD de lançamentos, requisitos de segurança e de operação.
-
 Aguardando o casal:
 
+- Validação da consolidação (seção abaixo).
 - Período do histórico no Minhas Economias.
-- Amostras de extratos e faturas (BB, Santander, XP x2, BBPrev, exterior) e da exportação do Minhas Economias, com dados pessoais apagados. Ficam só na sessão; no repositório entra apenas a descrição do formato.
+- Amostras de extratos e faturas (BB, Santander, XP x2, BBPrev, exterior) e da exportação do Minhas Economias, com dados pessoais apagados. Ficam só na sessão; no repositório entra apenas a descrição do formato. Pedir quando chegar o PRD de importação.
 
-Para rodadas seguintes (ou inferir na consolidação):
+A verificar em fonte, com data (no PRD ou TRD correspondente):
 
-- Investimentos: como entra o valor atual (à mão, importação de extrato da corretora), quais rendimentos acompanhar.
+- Formatos de exportação de cada instituição (CSV, OFX, PDF).
+- Regra da Receita para converter saldos no exterior em bens e direitos.
+- Versões atuais da stack (TRD).
+
+## Consolidação (2026-11-02)
+
+Proposta de divisão em PRDs (`docs/prds/`), na ordem de dependência:
+
+| PRD | Escopo |
+|---|---|
+| 001 Usuários, perfis e acesso | casal e filhos, o que cada um vê e faz, PIN, aparelho perdido |
+| 002 Contas e cartões | correntes, cartões com adicionais e fatura, investimentos, previdência, exterior em dólar; dono de cada conta |
+| 003 Lançamentos e categorias | manual, categorias e subcategorias, transferências, parcelas, recorrentes, regime de caixa, dados de IR no lançamento |
+| 004 Importação e conciliação | extratos e faturas CSV/PDF por instituição, conciliação com o digitado |
+| 005 Migração do Minhas Economias | histórico, categorias |
+| 006 Investimentos e previdência | aplicações, aportes, resgates, rendimento, saldo |
+| 007 Orçamento | planejado por categoria x realizado |
+| 008 Relatórios e patrimônio | categoria no mês, evolução, patrimônio com câmbio de fechamento |
+| 009 Filhos: limite e mesada | limite do cartão adicional por ciclo, mesada, aviso |
+| 010 Apoio ao imposto de renda | despesas dedutíveis, bens e direitos, declaração conjunta |
+| 011 Sincronização e operação | comportamento offline, sincronização em casa, conflitos, cópia de segurança, instalação e recuperação (lado do usuário) |
+
+Depois: `docs/trd.md` e ADRs (local-first com servidor doméstico; stack Android/Windows; criptografia no aparelho e na cópia; distribuição por APK) e `docs/glossario.md`.
