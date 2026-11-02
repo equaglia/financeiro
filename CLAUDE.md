@@ -11,7 +11,7 @@ Aplicação de controle financeiro da família. Docs em português.
 - PRD 001 (usuários, perfis e acesso): 1ª revisão aprovada em 2026-11-03.
 - PRD 002 (contas e cartões): 1ª revisão aprovada em 2026-11-03 (dinheiro em espécie entrou no escopo).
 - PRD 002: depois da 1ª revisão ganhou a US12 (contas administradas), aguardando revisão.
-- PRD 003 (lançamentos e categorias): aguardando a 1ª revisão do casal.
+- PRD 003 (lançamentos e categorias): 1ª revisão aprovada em 2026-11-03.
 - PRD 005 (migração do Minhas Economias): escrito antes do 004 (a exportação já estava em mãos); aguardando a 1ª revisão. Base: `docs/formatos/minhas-economias-exportacao.md` e `docs/categorias-iniciais.md` (proposta de agrupamento, o casal ajusta).
 - PRD 006 (investimentos e previdência): aguardando a 1ª revisão.
 - PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Sem as amostras, seguir para o 007 na ordem da consolidação.

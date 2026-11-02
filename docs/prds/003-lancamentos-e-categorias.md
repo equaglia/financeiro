@@ -1,7 +1,7 @@
 ---
 prd_number: "003"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: crítica
 created: 2026-11-03
 issue: ""
@@ -42,11 +42,11 @@ references:
 
 ### Fora do escopo
 
-- Anexar foto do recibo ou da nota ao lançamento *(premissa — confirme ou corrija; útil para o IR, mas pesa no armazenamento e na sincronização; pode vir depois)*.
-- Etiquetas (tags) livres além de categoria e subcategoria *(premissa — confirme ou corrija)*.
-- Terceiro nível de categoria *(premissa — confirme ou corrija; dois níveis, como no Minhas Economias)*.
+- Anexar foto do recibo ou da nota ao lançamento.
+- Etiquetas (tags) livres além de categoria e subcategoria.
+- Terceiro nível de categoria.
 - Rateio entre o casal (todas as despesas são comuns, decidido no brainstorm).
-- Lançamento por voz ou leitura de nota fiscal por foto *(premissa — confirme ou corrija)*.
+- Lançamento por voz ou leitura de nota fiscal por foto.
 
 ## 3. Funcionalidades
 
@@ -56,8 +56,8 @@ Como membro da família, quero lançar uma despesa ou receita em poucos toques n
 
 **Rules:**
 - Campos: tipo (despesa ou receita), **valor**, **data**, **conta ou cartão** (para cartão: qual cartão, titular ou adicional), **categoria e subcategoria**, descrição, favorecido ou pagador (estabelecimento, empresa, pessoa) e observação.
-- Obrigatórios: tipo, valor, data, conta ou cartão e categoria *(premissa — confirme ou corrija; descrição opcional)*.
-- O app sugere a categoria a partir do favorecido já usado antes (ex.: "Padaria X" → Alimentação > Padaria) *(premissa — confirme ou corrija)*.
+- Obrigatórios: tipo, valor, data, conta ou cartão e categoria.
+- O app sugere a categoria a partir do favorecido já usado antes (ex.: "Padaria X" → Alimentação > Padaria).
 - **Mês de referência**: nas contas (corrente, investimento, dinheiro, exterior), o mês da data; no cartão, o mês em que a fatura daquela compra é paga (PRD 002). Enquanto a fatura não é paga, a compra fica no mês previsto do vencimento.
 - Lançamento em conta em dólar fica em dólar (PRD 002).
 - O dependente só lança no próprio cartão adicional e na própria conta (PRD 001).
@@ -93,9 +93,9 @@ Como administrador, quero lançar uma compra parcelada no cartão uma única vez
 - Campos adicionais: número de parcelas e valor total (ou valor da parcela).
 - O app cria uma parcela em cada fatura a partir da fatura da compra; cada parcela tem o mês de referência do pagamento da fatura dela (regime de caixa).
 - Parcelas futuras ficam **previstas** até a fatura correspondente ser paga.
-- Diferença de centavos na divisão vai para a primeira parcela *(premissa — confirme ou corrija; alguns bancos usam a última)*.
-- Editar a categoria de uma parcela pergunta se vale para todas as parcelas *(premissa — confirme ou corrija)*.
-- Parcelamento também vale para compras em conta (ex.: boleto parcelado) como série de lançamentos previstos mensais *(premissa — confirme ou corrija)*.
+- Diferença de centavos na divisão vai para a primeira parcela.
+- Editar a categoria de uma parcela pergunta se vale para todas as parcelas.
+- Parcelamento também vale para compras em conta (ex.: boleto parcelado) como série de lançamentos previstos mensais.
 
 **Edge cases:**
 - Compra parcelada estornada no meio → parcelas futuras canceladas; as já pagas continuam, e o estorno entra como crédito.
@@ -108,9 +108,9 @@ Como administrador, quero cadastrar contas fixas (luz, escola, assinaturas, sal�
 
 **Rules:**
 - Campos: descrição, tipo (despesa ou receita), categoria, conta ou cartão, **valor fixo ou estimado**, frequência (mensal, anual, outra), dia previsto, início e fim opcional.
-- O app gera os lançamentos **previstos** dos próximos **12 meses** *(premissa — confirme ou corrija)*.
+- O app gera os lançamentos **previstos** dos próximos **12 meses**.
 - Quando o valor real chega (digitado ou importado), o previsto é **confirmado** com o valor real e sai da lista de previstos.
-- Valor estimado (ex.: luz) usa o valor informado; opcionalmente a média dos últimos 3 meses *(premissa — confirme ou corrija)*.
+- Valor estimado (ex.: luz) usa o valor informado; opcionalmente a média dos últimos 3 meses.
 - Mudar o valor ou o dia de uma conta fixa vale para os previstos futuros, não para os já confirmados.
 
 **Edge cases:**
@@ -124,7 +124,7 @@ Como administrador, quero ver o que já está comprometido nos próximos meses, 
 
 **Rules:**
 - Previstos vêm de: parcelas futuras, contas fixas, faturas fechadas a pagar e lançamentos com data futura.
-- Visão por mês: receitas previstas, despesas previstas, comprometimento (despesas previstas sobre receitas previstas) *(premissa — confirme ou corrija a forma de mostrar)*.
+- Visão por mês: receitas previstas, despesas previstas, comprometimento (despesas previstas sobre receitas previstas).
 - Previsto não conta como realizado nos relatórios (PRD 008), mas aparece no orçamento como "previsto" ao lado do realizado (PRD 007).
 - O dependente vê os previstos só do próprio cartão adicional e da própria conta.
 
@@ -143,7 +143,7 @@ Como administrador, quero editar, criar e reorganizar categorias e subcategorias
 - O casal pode: criar, renomear, mover subcategoria para outra categoria, **juntar** duas categorias (os lançamentos passam para a que fica) e **desativar** (some da escolha, continua no histórico).
 - Excluir de vez só categoria sem lançamentos.
 - Categoria pode ser marcada como **dedutível no IR**, com o tipo: saúde, educação ou previdência (US07).
-- Categoria fixa **Semanada** (despesa) e categoria fixa de **ajuste de saldo** (fora de despesa e receita, PRD 002) *(premissa — confirme ou corrija os nomes)*.
+- Categoria fixa **Semanada** (despesa) e categoria fixa de **ajuste de saldo** (fora de despesa e receita, PRD 002).
 - O dependente usa as categorias da família, sem editar (PRD 001).
 
 **Edge cases:**
@@ -158,14 +158,14 @@ Como administrador, quero informar o prestador e quem foi atendido nas despesas 
 **Rules:**
 - Em categoria dedutível de **saúde** ou **educação**, o app pede: **CPF ou CNPJ do prestador**, **nome do prestador** e **quem foi atendido** (titular, cônjuge ou um dos filhos, declaração conjunta com filhos dependentes).
 - O app confere os dígitos verificadores do CPF ou CNPJ.
-- O app lembra os dados do prestador: ao escolher o favorecido "Dr. Fulano", preenche CPF/CNPJ e nome *(premissa — confirme ou corrija)*.
+- O app lembra os dados do prestador: ao escolher o favorecido "Dr. Fulano", preenche CPF/CNPJ e nome.
 - Os dados podem ficar em branco na hora e ser completados depois; o relatório do IR lista as despesas dedutíveis **incompletas** (PRD 010).
 - Previdência: o dado é o plano (PRD 002); não pede prestador no lançamento.
 
 **Edge cases:**
-- Reembolso do plano de saúde → lançado como receita ligada à despesa reembolsada; o relatório do IR abate o reembolso *(premissa — confirme ou corrija)*.
+- Reembolso do plano de saúde → lançado como receita ligada à despesa reembolsada; o relatório do IR abate o reembolso.
 - Uma consulta para dois atendidos → dividir o lançamento (US08), cada parte com quem foi atendido.
-- Despesa dedutível no cartão adicional de um filho → o filho não vê nem preenche os dados de IR; o casal completa *(premissa — confirme ou corrija)*.
+- Despesa dedutível no cartão adicional de um filho → o filho não vê nem preenche os dados de IR; o casal completa.
 - CPF/CNPJ inválido → o app avisa, mas aceita salvar marcado como incompleto.
 
 ### US08: Dividir um lançamento em várias categorias
@@ -189,7 +189,7 @@ Como administrador, quero buscar, editar e excluir lançamentos, para corrigir e
 - Busca por texto (descrição, favorecido, observação), período, conta ou cartão, categoria, valor, tipo e situação (previsto, realizado, digitado não conciliado, importado).
 - Qualquer campo pode ser editado; o histórico registra quem alterou (PRD 001).
 - Excluir pede confirmação.
-- **Estorno ou devolução**: lançado como receita na mesma categoria da despesa (nas contas) ou crédito na fatura (no cartão), abatendo a despesa no mês de referência dele *(premissa — confirme ou corrija)*.
+- **Estorno ou devolução**: lançado como receita na mesma categoria da despesa (nas contas) ou crédito na fatura (no cartão), abatendo a despesa no mês de referência dele.
 - O dependente só edita e exclui o que é dele, conforme o PRD 001.
 
 **Edge cases:**
@@ -226,7 +226,7 @@ Entre contas da família?
 
 | Critério | Razão de negócio | Como verificar (observável) |
 |----------|------------------|-----------------------------|
-| Lançar uma despesa no celular leva até 15 s com categoria sugerida | o casal lança na hora; se for lento, volta a esquecer *(premissa — confirme ou corrija o limiar)* | cronometrar um lançamento repetido de favorecido conhecido |
+| Lançar uma despesa no celular leva até 15 s com categoria sugerida | o casal lança na hora; se for lento, volta a esquecer | cronometrar um lançamento repetido de favorecido conhecido |
 | Transferências (saque, aplicação, pagamento de fatura) não alteram despesas e receitas | não contar duas vezes | registrar cada tipo: totais do mês não mudam |
 | Semanada para o filho entra como despesa da família | decidido no brainstorm | transferir para a conta do filho como semanada: despesa na categoria Semanada |
 | Compra parcelada em 10x gera 10 parcelas, cada uma na fatura certa | parcelas futuras visíveis | lançar compra 10x: dez faturas com uma parcela cada |
@@ -315,3 +315,4 @@ Entre contas da família?
 - **2026-11-03:** Dados de IR pedidos no lançamento, com possibilidade de completar depois. Motivo: decisão do casal (rodada 6) de registrar CPF/CNPJ e atendido.
 - **2026-11-03:** Previsto não conta como realizado. Motivo: orçamento x realizado precisa refletir o que aconteceu (validado na consolidação).
 - **2026-11-03:** `depends_on: ["001", "002"]`. Critério: o lançamento pressupõe perfis e permissões (001) e contas, cartões e faturas (002).
+- **2026-11-03:** 1ª revisão do casal: os itens de "Fora do escopo" (foto do recibo, etiquetas, terceiro nível de categoria, lançamento por voz ou foto da nota) ficam fora; as demais premissas foram aceitas como estão. Marcas removidas; status mantido em `rascunho` até a revisão final de todos os PRDs.
