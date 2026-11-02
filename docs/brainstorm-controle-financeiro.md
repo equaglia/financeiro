@@ -1,7 +1,7 @@
 # Brainstorm: controle financeiro familiar
 
 **Lente:** especificação de projeto de desenvolvimento
-**Última sessão:** 2026-11-02 (rodada 4 de perguntas em andamento)
+**Última sessão:** 2026-11-02 (rodada 5 de perguntas em andamento)
 
 Documento de trabalho: guarda decisões, premissas, alternativas descartadas e pendências. É a base para os PRDs (`docs/prds/`) e o TRD (`docs/trd.md`), não a especificação final. Uma sessão nova retoma daqui (seção "Estados" e "Pendências").
 
@@ -26,7 +26,8 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - Contas correntes, contas de investimento e cartões de crédito são conjuntos.
 - Os filhos têm cartões adicionais (dependentes) no cartão do casal. Hoje não se interessam pelo app; o casal gostaria que passassem a usar.
 - Decidido: hoje cada filho já tem **conta individual própria**, onde recebe a **mesada por Pix**, e o cartão adicional tem **limite mensal**.
-- Decidido: no futuro os filhos podem ter **contas correntes e de investimento próprias**. Consequência: cada conta tem um dono (o casal ou um filho), e o que cada usuário vê depende disso. Os relatórios da família (casal) incluem as contas dos filhos? Em aberto.
+- Decidido: **as contas dos filhos entram no app**. No futuro podem ter também **contas correntes e de investimento próprias**.
+- Decidido: **o que o filho faz com o dinheiro da conta dele é dele**: a movimentação das contas dos filhos não entra nos relatórios da família. Consequência: cada conta tem um dono (o casal ou um filho), e o que cada usuário vê depende disso. Os relatórios da família (casal) incluem as contas dos filhos? Em aberto.
 
 ### Capacidades
 
@@ -35,16 +36,23 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - **Dependentes:** anotar e categorizar as próprias compras no cartão adicional; acompanhar o consumo do mês contra o limite do cartão adicional; acompanhar a mesada.
   - Inferido: o filho pode **registrar a compra no celular na hora**; quando o casal importa a fatura, a compra importada é conciliada com a registrada pelo filho (identificada pelo cartão adicional). Se errado: o filho só categoriza depois da importação.
   - Inferido: o limite mensal do cartão adicional é **cadastrado pelo casal** no app; o app mostra quanto já foi usado e avisa perto do limite. O app não bloqueia nada (quem bloqueia é o banco).
-  - Inferido: a **mesada é despesa da família** (categoria própria) e **receita do filho**. Se as contas dos filhos entrarem no app, o Pix da mesada vira transferência entre contas da família? Em aberto (rodada 4), muda os relatórios.
+  - Decidido: o **Pix da mesada é despesa da família** (não é transferência interna) e receita na conta do filho.
+  - Decidido: **as compras no cartão adicional são despesas da família** e entram nos relatórios do casal (o casal paga a fatura).
 - **Lançamento manual** de receitas e despesas (como no Minhas Economias).
 - **Importação opcional** de extratos e faturas em **CSV e PDF**.
-- **Relatórios gráficos e análises** (detalhar quais na rodada 3).
+- Decidido: **relatórios e análises**: gastos por categoria no mês; evolução ao longo dos meses; orçamento planejado x realizado; patrimônio total.
+- Decidido: **orçamento** por categoria (planejado), comparado com o realizado.
+- Decidido: **contas no exterior com controle simplificado**: lançamento a partir do extrato mensal, saldo em **dólar**; no patrimônio total, convertido pelo **câmbio do fechamento do mês**.
+- Decidido: **previdência** (BBPrev) entra como tipo de conta; inferido: acompanhada pelo saldo e pelas contribuições do extrato, e somada ao patrimônio.
+- Decidido: **migração do histórico** existente (formato e período: rodada 5).
 
 ### Regras de negócio levantadas (a confirmar nos PRDs)
 
 - Decidido: **transferência entre contas próprias não é receita nem despesa** (pagamento da fatura do cartão, aplicação/resgate de investimento, transferência entre correntes). Motivo: senão os relatórios contam o mesmo gasto duas vezes.
 - Decidido: **um lançamento digitado e o mesmo lançamento vindo de uma importação são reconhecidos como um só** (conciliação). Motivo: quem digita na hora e depois importa a fatura não pode duplicar gastos.
-- Inferido: a despesa no cartão é registrada **na data da compra**, e o cartão tem **fatura por ciclo** (fechamento e vencimento) e **compras parceladas**. Se errado: muda como o orçamento do mês é calculado (competência x caixa); ver Pendências.
+- Decidido: **regime de caixa para o cartão**: a compra no cartão conta no **mês em que a fatura é paga**, não no mês da compra. Cada parcela conta no mês da fatura em que é paga. O pagamento da fatura em si é transferência (não duplica). Inferido: a compra guarda a data real, para consulta, e o cartão tem fatura por ciclo (fechamento e vencimento).
+- Inferido: o **limite mensal do cartão adicional** é acompanhado por **ciclo de fatura** (é assim que o banco controla), mesmo que o relatório use o mês de pagamento.
+- Inferido: **patrimônio total da família** soma correntes, investimentos, previdência e exterior convertido; **não inclui as contas dos filhos** (coerente com "o que o filho faz é dele"). Se errado: patrimônio da família incluiria saldo dos filhos.
 - Inferido: cada compra no cartão guarda **qual cartão (titular ou adicional de qual filho) fez a compra**, o que permite ver os gastos de cada filho.
 
 ### Fora de escopo
@@ -68,6 +76,8 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - Inferido: **o servidor filtra o que cada usuário recebe** (serve: filhos não veem além do que é deles). O aparelho de um filho não pode receber a base da família inteira e esconder na tela; recebe só os dados dele. Restringe o desenho da sincronização (não é cópia integral para todos).
 - Inferido: **operação o mais automática possível**: instalação simples, atualização e cópia de segurança sem intervenção (serve: pedido do casal, servidor doméstico).
 - Inferido: no celular, app Android **instalado direto (APK)**, sem loja; no computador, app Windows ou web local. A escolha entre app nativo, multiplataforma ou web fica para o TRD (consultar versões atuais).
+- Decidido: **instituições hoje**: Banco do Brasil (corrente e investimento), Santander (corrente e investimento; cartões Visa e Mastercard), XP Investimentos (2 contas, cada uma com cartão Visa), BBPrev (previdência), contas no exterior (extrato mensal). A importação é especificada **por instituição e tipo de documento**. A verificar: que formatos (CSV, OFX, PDF) cada uma oferece hoje.
+- Inferido: **multimoeda mínima**: cada conta tem moeda (real ou dólar); conversão só para o patrimônio, pelo câmbio de fechamento mensal. Origem do câmbio (à mão ou PTAX do Banco Central): rodada 5.
 - Inferido: **importação de PDF depende do layout de cada banco**; o suporte é por banco/emissor, e um layout novo pode quebrar a importação (serve: importação opcional). CSV/OFX é mais estável quando o banco oferece.
 
 ## Não-funcionais
@@ -97,7 +107,7 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Filhos com cartão adicional; desejável que usem o app | Decidido | resposta 2, rodada 1 | 2026-11-02 |
 | Transferência entre contas próprias não conta como despesa | Decidido | confirmado na rodada 3 | 2026-11-02 |
 | Conciliação de digitado x importado | Decidido | confirmado na rodada 3 | 2026-11-02 |
-| Despesa do cartão na data da compra, com fatura e parcelas | Inferido | confirmar (competência x caixa) | 2026-11-02 |
+| Despesa do cartão na data da compra, com fatura e parcelas | Substituído | trocado por regime de caixa na rodada 4 | 2026-11-02 |
 | Compra identifica o cartão (titular / adicional) | Inferido | permite ver gastos de cada filho | 2026-11-02 |
 | Celulares e computadores | Decidido | resposta 1, rodada 2 | 2026-11-02 |
 | Servidor próprio, nem sempre ligado | Decidido | resposta 1, rodada 2 | 2026-11-02 |
@@ -115,13 +125,26 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Filhos já têm conta própria (mesada por Pix) e limite mensal no cartão adicional | Decidido | resposta 3, rodada 3 | 2026-11-02 |
 | Filho registra a compra na hora; conciliada com a fatura importada | Inferido | estende a conciliação ao filho | 2026-11-02 |
 | Limite do cartão adicional cadastrado pelo casal; app avisa, não bloqueia | Inferido | o bloqueio é do banco | 2026-11-02 |
-| Mesada: despesa da família, receita do filho | Inferido | depende de as contas dos filhos entrarem no app | 2026-11-02 |
+| Contas dos filhos entram no app; movimentação delas fora dos relatórios da família | Decidido | resposta 1, rodada 4 | 2026-11-02 |
+| Mesada: despesa da família, receita do filho | Decidido | resposta 1, rodada 4 | 2026-11-02 |
+| Compras do cartão adicional: despesa da família | Decidido | resposta 1, rodada 4 | 2026-11-02 |
+| Relatórios: categoria no mês, evolução, orçamento x realizado, patrimônio | Decidido | resposta 2, rodada 4 | 2026-11-02 |
+| Cartão em regime de caixa (mês do pagamento da fatura) | Decidido | resposta 2, rodada 4 (substitui a inferência "data da compra") | 2026-11-02 |
+| Limite do cartão adicional por ciclo de fatura | Inferido | é como o banco controla | 2026-11-02 |
+| Patrimônio da família sem as contas dos filhos | Inferido | coerente com "o que o filho faz é dele" | 2026-11-02 |
+| Instituições: BB, Santander, XP (2), BBPrev, exterior | Decidido | resposta 3, rodada 4 | 2026-11-02 |
+| Formatos de exportação de cada instituição | Em aberto | verificar (fonte e data) ou amostras do casal | 2026-11-02 |
+| Exterior: extrato mensal em dólar, câmbio de fechamento no patrimônio | Decidido | resposta 3, rodada 4 | 2026-11-02 |
+| Previdência BBPrev: saldo e contribuições, no patrimônio | Inferido | detalhe não discutido | 2026-11-02 |
+| Há histórico a migrar | Decidido | resposta 3, rodada 4 | 2026-11-02 |
 
 ## Alternativas descartadas
 
 - **Continuar no Minhas Economias com Open Finance:** descartado pela privacidade.
 - **Dados só num servidor sempre ligado (cliente-servidor clássico):** descartado; o servidor pode ficar desligado.
 - **Servidor alugado (VPS) ou nuvem paga:** descartado; nenhum custo adicional.
+- **Regime de competência no cartão (compra no mês da compra):** descartado na rodada 4; vale o mês do pagamento.
+- **Mesada como transferência interna:** descartada na rodada 4; é despesa da família.
 - **Acesso remoto ao servidor (túnel/VPN gratuito de terceiro):** descartado na rodada 3; sincronização só em casa.
 - **App para iPhone / PWA:** desnecessário; a família usa só Android.
 - **Cotação automática de investimentos:** descartada na rodada 2 (opção b).
@@ -129,17 +152,17 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 
 ## Pendências
 
-Rodada 4 (perguntas feitas em 2026-11-02):
+Rodada 5 (perguntas feitas em 2026-11-02):
 
-1. **Contas dos filhos no app.** As contas individuais (mesada) entram no app agora? Os relatórios do casal incluem os gastos dos filhos (cartão adicional e conta própria) ou a mesada é a despesa da família e o resto é só do filho? Destrava: regra da mesada, perfis, relatórios.
-2. **Relatórios, análises e orçamento**, e **competência x caixa** (compra no cartão conta no mês da compra ou no mês em que a fatura é paga). Destrava: PRD de relatórios e orçamento.
-3. **Bancos, cartões e corretoras** usados, e **histórico a migrar** (planilha atual; exportação do Minhas Economias, se existir). Destrava: PRD de importação e de migração.
+1. **O casal vê as contas dos filhos?** E os filhos veem o próprio cartão adicional inteiro (todas as compras dele) e a própria conta? Destrava: matriz de permissões.
+2. **Câmbio do fechamento mensal:** digitado à mão ou buscado automaticamente (PTAX do Banco Central, dado público; nada da família é enviado, mas o servidor precisa de internet). Outras moedas além do dólar? Investimentos no exterior também? Destrava: integração externa, multimoeda.
+3. **Histórico a migrar:** o que é (planilha: formato e colunas; exportação do Minhas Economias: formato), de quando até quando. E se o casal pode fornecer **amostras de extratos e faturas** de cada instituição (anonimizadas; onde guardá-las, já que o repositório está no GitHub). Destrava: PRDs de migração e importação.
 
-Para rodadas seguintes:
+Para rodadas seguintes (ou inferir na consolidação):
 
 - Destino da cópia de segurança, sem custo (disco externo, nuvem que já usam, com os dados criptografados).
 - Investimentos: como entra o valor atual (à mão, importação de extrato da corretora), quais rendimentos acompanhar, imposto de renda.
-- Categorias: aproveitar as do Minhas Economias ou criar do zero.
+- Categorias: aproveitar as do Minhas Economias ou criar do zero; subcategorias.
 - Lançamentos recorrentes (contas fixas) e parcelas futuras.
 - Conhecimento técnico do casal (quem instala e mantém o servidor).
 - Senha/bloqueio do app nos celulares; o que acontece se um celular for perdido.
