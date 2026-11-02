@@ -8,7 +8,7 @@ financeiro/
 │   ├── brainstorm-controle-financeiro.md
 │   ├── estrutura-do-repositorio.md
 │   ├── glossario.md               # (a criar) termos: conta, cartão adicional, fatura, categoria…
-│   ├── prds/                      # (a criar) 001-lancamentos.md, 002-…
+│   ├── prds/                      # um PRD por funcionalidade (001-usuarios-perfis-e-acesso.md, …)
 │   ├── trd.md                     # (a criar) arquitetura, stack, não-funcionais
 │   └── adrs/                      # (a criar) uma decisão técnica por arquivo
 ├── .agents/skills/                # skills: brainstorm, escrever-prd, escrever-trd
