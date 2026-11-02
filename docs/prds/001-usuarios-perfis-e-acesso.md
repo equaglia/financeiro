@@ -1,6 +1,6 @@
 ---
 prd_number: "001"
-status: rascunho
+status: pronto
 priority: crítica
 created: 2026-11-02
 issue: ""
@@ -40,8 +40,8 @@ references:
 ### Fora do escopo
 
 - Mais de uma família no mesmo servidor, cadastro aberto ou convite por e-mail. Sistema de uma família só.
-- Permissões configuráveis por conta ou por funcionalidade *(premissa — confirme ou corrija)*.
-- Entrar com digital ou reconhecimento facial no lugar do PIN *(premissa — confirme ou corrija; pode entrar depois como atalho, mantendo o PIN)*.
+- Permissões configuráveis por conta ou por funcionalidade.
+- Entrar com digital ou reconhecimento facial no lugar do PIN.
 - Acesso fora de casa ao servidor (decidido no brainstorm).
 - Separação de finanças entre os dois administradores: os dois veem e podem alterar tudo.
 
@@ -54,11 +54,11 @@ Como administrador, quero configurar a família na primeira vez que instalo o se
 **Rules:**
 - No primeiro uso, o servidor pede o nome da família e cria o **primeiro administrador** (nome e PIN).
 - Enquanto a família não existe, nenhum aparelho consegue se vincular.
-- A configuração inicial só pode ser feita **no próprio computador do servidor** *(premissa — confirme ou corrija)*.
+- A configuração inicial só pode ser feita **no próprio computador do servidor**.
 - O servidor mostra, ao final, as instruções para vincular o primeiro celular (US03).
 
 **Edge cases:**
-- Configuração interrompida no meio (computador desligado) → na próxima vez recomeça do zero, sem família pela metade *(premissa — confirme ou corrija)*.
+- Configuração interrompida no meio (computador desligado) → na próxima vez recomeça do zero, sem família pela metade.
 - Tentativa de criar uma segunda família no mesmo servidor → não é permitida; o servidor tem uma família só.
 - Servidor reinstalado num computador novo → a família é recuperada da cópia de segurança (PRD 011), não recriada.
 
@@ -68,12 +68,12 @@ Como administrador, quero cadastrar o outro administrador e os filhos, para que 
 
 **Rules:**
 - Cada membro tem nome, perfil (administrador ou dependente) e PIN.
-- Pode haver **até 2 administradores** *(premissa — confirme ou corrija)* e qualquer número de dependentes.
+- Pode haver **até 2 administradores** e qualquer número de dependentes.
 - Para dependente, o cadastro diz quais contas e cartões adicionais são dele (ligação feita nos cadastros de contas e cartões, PRD 002).
-- Para dependente e para o outro administrador, o cadastro também registra **CPF e data de nascimento**, usados no apoio ao IR (PRD 010) *(premissa — confirme ou corrija)*.
+- Para dependente e para o outro administrador, o cadastro também registra **CPF e data de nascimento**, usados no apoio ao IR (PRD 010).
 - Um administrador pode **desativar** um membro: ele perde o acesso em todos os aparelhos; o histórico e as contas continuam.
 - Um administrador pode reativar um membro desativado.
-- Um administrador pode mudar o perfil de um membro (ex.: filho que vira adulto) *(premissa — confirme ou corrija)*.
+- Um administrador pode mudar o perfil de um membro (ex.: filho que vira adulto).
 
 **Edge cases:**
 - Tentativa de desativar o último administrador ativo → bloqueada; a família não pode ficar sem administrador.
@@ -86,14 +86,14 @@ Como membro da família, quero vincular meu celular ou computador, para usar o a
 
 **Rules:**
 - O aparelho precisa estar no **Wi-Fi de casa**, com o servidor ligado.
-- O vínculo é autorizado por um **administrador**: por exemplo, o app mostra um código no aparelho novo e o administrador confirma no servidor ou no próprio aparelho dele *(premissa — confirme ou corrija a forma; a regra é que só um administrador autoriza)*.
-- Cada aparelho pertence a **um membro**. Exceção: um computador pode ter **os dois administradores**, cada um entrando com o próprio PIN *(premissa — confirme ou corrija)*.
+- O vínculo é autorizado por um **administrador**: o app mostra um código no aparelho novo e o administrador confirma no servidor ou no próprio aparelho dele.
+- Cada aparelho pertence a **um membro**. Exceção: um computador pode ter **os dois administradores**, cada um entrando com o próprio PIN.
 - Um dependente não pode ser vinculado num aparelho que também tenha um administrador. Motivo: o aparelho guardaria dados da família.
 - Depois de vinculado, o aparelho recebe os dados que o membro pode ver (PRD 011) e passa a funcionar também fora de casa.
 - O casal vê a lista de aparelhos vinculados: membro, nome do aparelho, última sincronização.
 
 **Edge cases:**
-- Código de vínculo expirado ou digitado errado → vínculo recusado; gerar código novo. O código vale **10 minutos** *(premissa — confirme ou corrija)*.
+- Código de vínculo expirado ou digitado errado → vínculo recusado; gerar código novo. O código vale **10 minutos**.
 - Aparelho fora do Wi-Fi de casa ou servidor desligado → o app explica que o vínculo só é feito em casa, com o servidor ligado.
 - Aparelho já vinculado a outro membro → precisa ser desvinculado antes (os dados locais do membro anterior são apagados).
 
@@ -102,16 +102,16 @@ Como membro da família, quero vincular meu celular ou computador, para usar o a
 Como membro da família, quero que o app peça meu PIN ao abrir, para que ninguém mais veja meus dados no meu aparelho.
 
 **Rules:**
-- O PIN tem **6 dígitos** *(premissa — confirme ou corrija)*.
-- O app pede o PIN ao abrir e de novo depois de **5 minutos** sem uso ou em segundo plano *(premissa — confirme ou corrija)*.
+- O PIN tem **6 dígitos**.
+- O app pede o PIN ao abrir e de novo depois de **5 minutos** sem uso ou em segundo plano.
 - O PIN funciona também fora de casa, sem o servidor (o app funciona offline).
 - O membro pode trocar o próprio PIN informando o atual.
-- Após **5 PINs errados seguidos**, o app espera um tempo crescente antes de aceitar nova tentativa (1 min, 5 min, 30 min…) *(premissa — confirme ou corrija)*.
+- Após **5 PINs errados seguidos**, o app espera um tempo crescente antes de aceitar nova tentativa (1 min, 5 min, 30 min…).
 
 **Edge cases:**
 - Membro esqueceu o PIN → um administrador cria um PIN provisório para ele, na rede de casa; no primeiro uso o membro troca.
 - Administrador esqueceu o PIN → o outro administrador redefine. Os dois esqueceram → recuperação no computador do servidor, com instruções (PRD 011).
-- PIN trocado num aparelho → vale nos outros aparelhos do mesmo membro depois da próxima sincronização *(premissa — confirme ou corrija)*.
+- PIN trocado num aparelho → vale nos outros aparelhos do mesmo membro depois da próxima sincronização.
 - PIN óbvio (000000, 123456) → recusado.
 
 ### US05: Ver só o que o perfil permite
@@ -124,7 +124,7 @@ Como filho, quero ver minha conta e as compras do meu cartão adicional, para ac
   - a própria conta individual e as contas próprias que vier a ter;
   - todas as compras do próprio cartão adicional, com o consumo do ciclo contra o limite dele (PRD 009);
   - as categorias da família, para categorizar as próprias compras.
-- **Dependente não vê**: contas, cartões e lançamentos da família; compras do titular e do outro filho; total da fatura do cartão; limite total do cartão; orçamento, relatórios, patrimônio e investimentos da família; dados de IR *(premissa — confirme ou corrija os itens)*.
+- **Dependente não vê**: contas, cartões e lançamentos da família; compras do titular e do outro filho; total da fatura do cartão; limite total do cartão; orçamento, relatórios, patrimônio e investimentos da família; dados de IR.
 - O que o dependente não pode ver não é copiado para o aparelho dele.
 
 **Edge cases:**
@@ -139,13 +139,13 @@ Como filho, quero registrar, anotar e categorizar as minhas compras, para que me
 **Rules:**
 - O dependente pode **registrar** uma compra no próprio cartão adicional ou um movimento na própria conta (conciliado depois com a importação, PRD 004).
 - Pode **categorizar** e **anotar** (texto livre) qualquer lançamento do próprio cartão adicional e da própria conta, inclusive os importados pelo casal.
-- Não pode **excluir** lançamentos importados nem lançamentos feitos pelo casal *(premissa — confirme ou corrija)*.
-- Pode excluir ou corrigir o que ele mesmo registrou, enquanto não foi conciliado com a importação *(premissa — confirme ou corrija)*.
-- Não pode criar nem editar categorias, contas ou cartões *(premissa — confirme ou corrija)*.
+- Não pode **excluir** lançamentos importados nem lançamentos feitos pelo casal.
+- Pode excluir ou corrigir o que ele mesmo registrou, enquanto não foi conciliado com a importação.
+- Não pode criar nem editar categorias, contas ou cartões.
 - O casal pode corrigir qualquer categorização feita pelo filho.
 
 **Edge cases:**
-- Filho e casal mudam a categoria do mesmo lançamento enquanto estão fora de casa → vale a alteração do administrador *(premissa — confirme ou corrija; regra geral de conflitos no PRD 011)*.
+- Filho e casal mudam a categoria do mesmo lançamento enquanto estão fora de casa → vale a alteração do administrador (regra geral de conflitos no PRD 011).
 - Filho tenta registrar compra em cartão que não é dele → não é possível; só o próprio cartão adicional aparece.
 - Filho desativado → as anotações e categorizações dele continuam no histórico.
 
@@ -158,19 +158,19 @@ Como administrador, quero revogar um aparelho, para que ele não receba mais dad
 - Aparelho revogado não sincroniza mais: o servidor recusa.
 - Se um aparelho revogado voltar a se conectar ao servidor, o app **apaga os dados locais** e volta para a tela de vínculo.
 - Os dados no aparelho perdido continuam protegidos pelo PIN e pela criptografia (TRD); a revogação não apaga nada à distância, porque o servidor só alcança aparelhos dentro de casa.
-- Lançamentos feitos no aparelho e ainda não sincronizados no momento da perda são perdidos. O app mostra quantos lançamentos ainda não foram sincronizados, para lembrar o membro de sincronizar *(premissa — confirme ou corrija)*.
+- Lançamentos feitos no aparelho e ainda não sincronizados no momento da perda são perdidos. O app mostra quantos lançamentos ainda não foram sincronizados, para lembrar o membro de sincronizar.
 
 **Edge cases:**
 - Celular perdido é encontrado depois de revogado → precisa ser vinculado de novo (US03); o que não tinha sido sincronizado se perde.
 - Administrador revoga o único aparelho do outro administrador por engano → o outro vincula de novo (US03).
-- Aparelho revogado ainda com dados não sincronizados → o app avisa antes de apagar que esses dados serão perdidos *(premissa — confirme ou corrija)*.
+- Aparelho revogado ainda com dados não sincronizados → o app avisa antes de apagar que esses dados serão perdidos.
 
 ### US08: Saber quem lançou ou alterou
 
 Como administrador, quero ver quem criou e quem alterou cada lançamento, para entender diferenças entre o que cada um registrou.
 
 **Rules:**
-- Todo lançamento guarda quem o criou, quando, por qual meio (digitado, importado, migrado) e quem fez a última alteração *(premissa — confirme ou corrija)*.
+- Todo lançamento guarda quem o criou, quando, por qual meio (digitado, importado, migrado) e quem fez a última alteração.
 - O casal vê essa informação no detalhe do lançamento.
 - O dependente vê essa informação só nos lançamentos que ele pode ver.
 
@@ -217,7 +217,7 @@ Está no Wi-Fi de casa e o servidor está ligado?
 | Métrica | Baseline (fonte) | Meta | Prazo | Mín. aceitável | Responsável |
 |---------|-------------------|------|-------|-----------------|-------------|
 | Membros com aparelho vinculado e usando o app | 0 (app não existe) | 4 (casal e filhos) | 1 mês após a entrega | 2 (o casal) | casal |
-| Compras do cartão adicional categorizadas pelo próprio filho | 0 (filhos não participam hoje) | metade das compras do mês | 3 meses após a entrega *(premissa — confirme ou corrija)* | alguma participação de cada filho | casal |
+| Compras do cartão adicional categorizadas pelo próprio filho | 0 (filhos não participam hoje) | metade das compras do mês | 3 meses após a entrega | alguma participação de cada filho | casal |
 | Incidentes de dado da família visto por um filho | não se aplica | 0 | contínuo | 0 | casal |
 
 ## 6. Milestones
@@ -290,3 +290,4 @@ Está no Wi-Fi de casa e o servidor está ligado?
 - **2026-11-02:** PIN ao entrar. Motivo: decisão do casal na rodada 6.
 - **2026-11-02:** Aparelho perdido: revogação pelo casal e dados protegidos por PIN e criptografia; sem apagamento remoto. Motivo: validado na consolidação; o servidor só alcança aparelhos em casa.
 - **2026-11-02:** `depends_on: []`. Critério: é o primeiro PRD; os outros dependem dele. As ligações com os PRDs 002 e 011 estão na seção 7 como dependências de entrega, porque ainda não foram escritos.
+- **2026-11-03:** As 23 premissas do rascunho foram aceitas pelo casal como estão; marcas removidas e status alterado para `pronto`.
