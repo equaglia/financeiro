@@ -1,7 +1,7 @@
 ---
 prd_number: "005"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: alta
 created: 2026-11-03
 issue: ""
@@ -43,8 +43,8 @@ references:
 
 ### Fora do escopo
 
-- Migrar de outros apps ou da planilha atual *(premissa — confirme ou corrija; a planilha cobre o mesmo período que o Minhas Economias?)*.
-- Recuperar os dados de IR (CPF/CNPJ, atendido) das despesas antigas: os anos passados já foram declarados *(premissa — confirme ou corrija)*.
+- Migrar de outros apps ou da planilha atual.
+- Recuperar os dados de IR (CPF/CNPJ, atendido) das despesas antigas: os anos passados já foram declarados.
 - Descobrir no histórico qual cartão adicional fez cada compra: a exportação não traz essa informação.
 - Migrar as contas e os lançamentos da PJ.
 - Sincronização contínua com o Minhas Economias: a migração é feita uma vez (pode ser refeita, US07).
@@ -58,14 +58,14 @@ Como administrador, quero carregar de uma vez todos os arquivos exportados do Mi
 **Rules:**
 - Aceita vários arquivos `.xls` no formato descrito em `docs/formatos/minhas-economias-exportacao.md`.
 - O assistente mostra o resumo: período coberto, total de linhas, linhas por ano, contas e categorias encontradas.
-- Arquivos com **períodos sobrepostos** → as linhas do período repetido são consideradas uma vez só: vale o arquivo mais recente *(premissa — confirme ou corrija)*.
+- Arquivos com **períodos sobrepostos** → as linhas do período repetido são consideradas uma vez só: vale o arquivo mais recente.
 - Buracos no período (meses sem nenhum arquivo) são apontados.
 - A migração é feita no computador (os arquivos estão no Dropbox local) e só por administrador.
 
 **Edge cases:**
 - Arquivo com colunas diferentes ou outra planilha → recusado, com a indicação do que difere.
 - Linha com data, valor ou conta vazios → listada como problema; não bloqueia o resto.
-- Arquivo `.xlsx` ou `.csv` salvo a partir do `.xls` → aceito se tiver as mesmas colunas *(premissa — confirme ou corrija)*.
+- Arquivo `.xlsx` ou `.csv` salvo a partir do `.xls` → aceito se tiver as mesmas colunas.
 
 ### US02: Mapear as contas
 
@@ -73,11 +73,11 @@ Como administrador, quero dizer a que conta do app corresponde cada conta do Min
 
 **Rules:**
 - Para cada conta encontrada, o administrador escolhe: **ligar a uma conta já cadastrada**, **criar uma conta nova** (tipo, dono e moeda, PRD 002) ou **não migrar** (ex.: PJ).
-- O assistente sugere o tipo pelo nome (ex.: "Cartão", "Visa", "Mastercard" → cartão; "Cash" → dinheiro em espécie; "Inv", "Fundos" → investimento) *(premissa — confirme ou corrija)*.
+- O assistente sugere o tipo pelo nome (ex.: "Cartão", "Visa", "Mastercard" → cartão; "Cash" → dinheiro em espécie; "Inv", "Fundos" → investimento).
 - Dinheiro em espécie por pessoa ("Cash - <pessoa>") → uma carteira por pessoa, com o dono certo (família ou filho, PRD 002).
 - Conta em nome de parente → **conta administrada** (PRD 002, US12).
 - Cartão → ligado a um cartão cadastrado (com dia de fechamento e vencimento), necessário para US05.
-- Conta ligada a uma conta em dólar → os valores são tratados como dólar, porque a exportação não tem moeda *(premissa — confirme ou corrija)*.
+- Conta ligada a uma conta em dólar → os valores são tratados como dólar, porque a exportação não tem moeda.
 
 **Edge cases:**
 - Conta que trocou de nome no Minhas Economias ao longo dos anos (aparece com dois nomes) → os dois nomes podem ser ligados à mesma conta do app.
@@ -98,7 +98,7 @@ Como administrador, quero que as categorias do Minhas Economias sejam agrupadas 
 
 **Edge cases:**
 - Duas categorias do arquivo que significam a mesma coisa (ex.: com e sem acento) → podem ser ligadas à mesma categoria do app.
-- Categoria cujo sinal do valor não bate com o tipo (receita numa categoria de despesa) → mantida como estorno ou devolução da despesa (PRD 003, US09) *(premissa — confirme ou corrija)*.
+- Categoria cujo sinal do valor não bate com o tipo (receita numa categoria de despesa) → mantida como estorno ou devolução da despesa (PRD 003, US09).
 
 ### US04: Converter transferências e casos especiais
 
@@ -107,7 +107,7 @@ Como administrador, quero que transferências, dinheiro da PJ e do espólio seja
 **Rules:**
 - **Pares de transferência**: duas linhas "Transferência" com a mesma data, a mesma descrição e valores opostos viram **uma transferência** entre as duas contas do app.
 - **Pagamento de fatura** (transferência para a conta de um cartão) vira pagamento da fatura (PRD 002, US07).
-- **Transferência com uma conta não migrada (PJ)**: só o lado da família entra. Entrada vinda da PJ → **receita** "Lucros e dividendos"; saída para a PJ → o administrador escolhe a categoria (sugestão: A classificar) *(premissa — confirme ou corrija)*.
+- **Transferência com uma conta não migrada (PJ)**: só o lado da família entra. Entrada vinda da PJ → **receita** "Lucros e dividendos"; saída para a PJ → o administrador escolhe a categoria (sugestão: A classificar).
 - **Espólio**: lançamentos da categoria do espólio numa conta da família viram **transferências** entre essa conta e a conta administrada do espólio (PRD 002, US12).
 - **Transferência para conta de filho** (ex.: carteira do filho) → despesa da família, categoria Semanada ou outra escolhida, conforme a regra do PRD 003.
 - **Transferência para conta administrada** (ex.: investimento do parente) → continua transferência, fora dos números da família.
@@ -125,12 +125,12 @@ Como administrador, quero que as compras antigas no cartão sejam agrupadas em f
 - As compras de cada cartão são distribuídas nas faturas pelo **dia de fechamento** cadastrado (PRD 002).
 - Os **pagamentos** migrados (US04) marcam o mês de cada fatura; as compras contam no mês do pagamento.
 - Para cada fatura reconstruída, o assistente compara o total das compras com o pagamento e mostra a diferença.
-- O dia de fechamento pode ter mudado ao longo dos anos: o administrador pode informar **períodos com outro dia de fechamento** *(premissa — confirme ou corrija)*.
+- O dia de fechamento pode ter mudado ao longo dos anos: o administrador pode informar **períodos com outro dia de fechamento**.
 - Compras do histórico ficam atribuídas ao **titular** do cartão (a exportação não identifica o adicional); os filhos não veem compras anteriores à migração no cartão deles.
-- Parcelas: cada parcela já vem como uma linha no Minhas Economias e é migrada como compra própria naquela fatura, sem formar série *(premissa — confirme ou corrija)*.
+- Parcelas: cada parcela já vem como uma linha no Minhas Economias e é migrada como compra própria naquela fatura, sem formar série.
 
 **Edge cases:**
-- Diferença entre compras e pagamento numa fatura antiga → aceitável; o administrador pode ignorar diferenças de anos anteriores e corrigir só as recentes *(premissa — confirme ou corrija)*.
+- Diferença entre compras e pagamento numa fatura antiga → aceitável; o administrador pode ignorar diferenças de anos anteriores e corrigir só as recentes.
 - Fatura sem pagamento encontrado → as compras ficam no mês do vencimento previsto, marcadas para revisão.
 - Cartão que existiu e foi cancelado → criado como cartão encerrado (PRD 002, US09).
 
@@ -139,7 +139,7 @@ Como administrador, quero que as compras antigas no cartão sejam agrupadas em f
 Como administrador, quero que o saldo de cada conta migrada bata com o banco hoje, para que o histórico e o presente fiquem coerentes.
 
 **Rules:**
-- A exportação não traz saldos. Para cada conta migrada, o administrador informa o **saldo atual** (do extrato) numa data; o app calcula o saldo inicial em abril de 2017 (ou na primeira data da conta) subtraindo o histórico *(premissa — confirme ou corrija)*.
+- A exportação não traz saldos. Para cada conta migrada, o administrador informa o **saldo atual** (do extrato) numa data; o app calcula o saldo inicial em abril de 2017 (ou na primeira data da conta) subtraindo o histórico.
 - Alternativa por conta: informar o saldo numa data antiga conhecida.
 - A conta fica conferida na data informada (PRD 002, US08).
 
@@ -170,7 +170,7 @@ Como administrador, quero definir até quando vale o Minhas Economias, para que 
 - O administrador escolhe a **data de corte**: lançamentos até ela vêm da migração; depois dela, só do app (digitados ou importados).
 - Sugestão: o último dia do último arquivo exportado.
 - Lançamentos do arquivo depois da data de corte são ignorados e listados.
-- Lançamentos feitos no app antes da data de corte → o assistente aponta possíveis duplicados (mesma conta, data e valor) para o administrador decidir *(premissa — confirme ou corrija)*.
+- Lançamentos feitos no app antes da data de corte → o assistente aponta possíveis duplicados (mesma conta, data e valor) para o administrador decidir.
 
 **Edge cases:**
 - O casal começa a usar o app antes de exportar o último trimestre do Minhas Economias → a data de corte é a do dia em que o app passou a ser usado; o período entre o último arquivo e essa data fica como buraco apontado (US01).
@@ -218,7 +218,7 @@ Confirmar lote (pode ser desfeito)
 | Compras de cartão do histórico contam no mês do pagamento da fatura | regime de caixa também no histórico | compra de 25/03 com fatura paga em 10/04 aparece em abril |
 | Saldo atual de cada conta migrada igual ao do extrato | coerência entre histórico e presente | após informar o saldo atual, conta conferida com diferença zero |
 | Desfazer o lote deixa o app como antes da migração | errar o mapeamento não pode ser irreversível | confirmar e desfazer: contagem de lançamentos volta ao valor anterior |
-| Prévia de 9 anos de histórico fica pronta em até 1 minuto no computador *(premissa — confirme ou corrija)* | o administrador refaz a prévia várias vezes ao ajustar mapeamentos | cronometrar com todos os arquivos |
+| Prévia de 9 anos de histórico fica pronta em até 1 minuto no computador | o administrador refaz a prévia várias vezes ao ajustar mapeamentos | cronometrar com todos os arquivos |
 
 ### 5b. Métricas de sucesso
 
@@ -292,3 +292,4 @@ Confirmar lote (pode ser desfeito)
 - **2026-11-03:** Hierarquia de categorias proposta por Claude e ajustada pelo casal. Motivo: listar no Minhas Economias é trabalhoso (casal).
 - **2026-11-03:** PRD 005 escrito antes do 004. Motivo: a exportação do Minhas Economias já estava em mãos; as amostras dos bancos (PRD 004) chegam depois.
 - **2026-11-03:** `depends_on: ["001", "002", "003"]`. Critério: autor "migração" e permissão de administrador (001); contas, cartões, faturas e contas administradas (002); lançamentos, transferências e categorias (003). Não depende do 004: a migração não usa a importação de extratos.
+- **2026-11-03:** 1ª revisão do casal: as 14 premissas foram aceitas como estão (inclusive: a planilha atual não é migrada; dados de IR das despesas antigas não são recuperados). Marcas removidas; status mantido em `rascunho` até a revisão final.
