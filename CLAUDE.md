@@ -16,7 +16,8 @@ Aplicação de controle financeiro da família. Docs em português.
 - PRD 006 (investimentos e previdência): aguardando a 1ª revisão.
 - PRD 007 (orçamento): aguardando a 1ª revisão.
 - PRD 008 (relatórios e patrimônio): aguardando a 1ª revisão.
-- PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Sem as amostras, seguir para o 009 na ordem da consolidação.
+- PRD 009 (filhos: limite e semanada): aguardando a 1ª revisão.
+- PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Sem as amostras, seguir para o 010 na ordem da consolidação.
 - Amostras: o casal anexa na conversa; analisar numa pasta isolada do scratchpad; **nunca gravar no repositório** (só o formato, sem nomes nem valores). Nomes de pessoas não entram nos documentos.
 
 Fluxo de documentos:
