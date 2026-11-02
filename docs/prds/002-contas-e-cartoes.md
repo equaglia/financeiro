@@ -1,6 +1,7 @@
 ---
 prd_number: "002"
-status: pronto
+status: rascunho
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: crítica
 created: 2026-11-03
 issue: ""
@@ -325,5 +326,5 @@ Antes ou depois do dia de fechamento?
 - **2026-11-03:** Compra no cartão conta no mês do pagamento da fatura; pagamento é transferência. Motivo: decisões do casal no brainstorm (rodadas 3 e 4).
 - **2026-11-03:** Conta do filho tem o filho como dono e fica fora dos relatórios e do patrimônio da família. Motivo: decisão do casal no brainstorm (rodadas 4 e 5).
 - **2026-11-03:** `depends_on: ["001"]`. Critério: o dono da conta e a visibilidade por perfil vêm do PRD 001. O PRD 003 (lançamentos) depende deste, não o contrário.
-- **2026-11-03:** Revisão do casal: sempre pagam a fatura inteira (pagamento parcial vira exceção); contas da XP são de investimento, sem conta corrente; previdência com tipo de plano (só PGBL é dedutível) e participante; **dinheiro em espécie entra no escopo** como tipo de conta (US11), como no Minhas Economias; demais premissas aceitas. Status alterado para `pronto`.
+- **2026-11-03:** Revisão do casal: sempre pagam a fatura inteira (pagamento parcial vira exceção); contas da XP são de investimento, sem conta corrente; previdência com tipo de plano (só PGBL é dedutível) e participante; **dinheiro em espécie entra no escopo** como tipo de conta (US11), como no Minhas Economias; demais premissas aceitas. Status mantido em `rascunho` até a revisão final de todos os PRDs (1ª revisão aprovada).
 - **2026-11-03:** A conta de pagamento do cartão pode ser corrente ou de investimento. Motivo: os cartões da XP são da conta de investimento, já que a família não usa conta corrente na XP.

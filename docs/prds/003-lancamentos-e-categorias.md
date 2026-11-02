@@ -1,6 +1,7 @@
 ---
 prd_number: "003"
 status: rascunho
+revisao: "aguardando a 1ª revisão do casal"
 priority: crítica
 created: 2026-11-03
 issue: ""

@@ -1,6 +1,7 @@
 ---
 prd_number: "001"
-status: pronto
+status: rascunho
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: crítica
 created: 2026-11-02
 issue: ""
@@ -290,4 +291,4 @@ Está no Wi-Fi de casa e o servidor está ligado?
 - **2026-11-02:** PIN ao entrar. Motivo: decisão do casal na rodada 6.
 - **2026-11-02:** Aparelho perdido: revogação pelo casal e dados protegidos por PIN e criptografia; sem apagamento remoto. Motivo: validado na consolidação; o servidor só alcança aparelhos em casa.
 - **2026-11-02:** `depends_on: []`. Critério: é o primeiro PRD; os outros dependem dele. As ligações com os PRDs 002 e 011 estão na seção 7 como dependências de entrega, porque ainda não foram escritos.
-- **2026-11-03:** As 23 premissas do rascunho foram aceitas pelo casal como estão; marcas removidas e status alterado para `pronto`.
+- **2026-11-03:** As 23 premissas do rascunho foram aceitas pelo casal como estão; marcas removidas. Status mantido em `rascunho` até a revisão final de todos os PRDs (1ª revisão aprovada).
