@@ -41,6 +41,7 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
   - Decidido: o **Pix da mesada é despesa da família** (não é transferência interna) e receita na conta do filho.
   - Decidido: **as compras no cartão adicional são despesas da família** e entram nos relatórios do casal (o casal paga a fatura).
 - **Lançamento manual** de receitas e despesas (como no Minhas Economias).
+- Decidido (revisão do PRD 002, 2026-11-03): **dinheiro em espécie** (carteira) como tipo de conta, como no Minhas Economias. Contas da XP são só de investimento (a família não usa a conta corrente da XP). A família sempre paga a fatura inteira.
 - **Importação opcional** de extratos e faturas em **CSV e PDF**.
 - Decidido: **relatórios e análises**: gastos por categoria no mês; evolução ao longo dos meses; orçamento planejado x realizado; patrimônio total.
 - Decidido: **orçamento** por categoria (planejado), comparado com o realizado.
