@@ -1,7 +1,7 @@
 # Brainstorm: controle financeiro familiar
 
 **Lente:** especificação de projeto de desenvolvimento
-**Última sessão:** 2026-11-02 (rodada 3 de perguntas em andamento)
+**Última sessão:** 2026-11-02 (rodada 4 de perguntas em andamento)
 
 Documento de trabalho: guarda decisões, premissas, alternativas descartadas e pendências. É a base para os PRDs (`docs/prds/`) e o TRD (`docs/trd.md`), não a especificação final. Uma sessão nova retoma daqui (seção "Estados" e "Pendências").
 
@@ -25,21 +25,25 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 - Todas as despesas são comuns: não há separação "dinheiro dele / dela" nem rateio.
 - Contas correntes, contas de investimento e cartões de crédito são conjuntos.
 - Os filhos têm cartões adicionais (dependentes) no cartão do casal. Hoje não se interessam pelo app; o casal gostaria que passassem a usar.
+- Decidido: hoje cada filho já tem **conta individual própria**, onde recebe a **mesada por Pix**, e o cartão adicional tem **limite mensal**.
 - Decidido: no futuro os filhos podem ter **contas correntes e de investimento próprias**. Consequência: cada conta tem um dono (o casal ou um filho), e o que cada usuário vê depende disso. Os relatórios da família (casal) incluem as contas dos filhos? Em aberto.
 
 ### Capacidades
 
 - Cadastrar e acompanhar **contas correntes**, **cartões de crédito** (com cartões adicionais) e **contas de investimento**.
 - Decidido (nível b): **investimentos por aplicação** (CDB, fundo, ações, Tesouro etc.) com aportes, resgates e rendimento. Sem cotação automática: o valor atual é informado à mão ou importado. Descartados: (a) só saldo por conta, pouco para análise; (c) cotação automática, dependência externa.
-- **Dependentes:** anotar e categorizar as próprias compras no cartão adicional; acompanhar limite ou mesada (regras na rodada 3).
+- **Dependentes:** anotar e categorizar as próprias compras no cartão adicional; acompanhar o consumo do mês contra o limite do cartão adicional; acompanhar a mesada.
+  - Inferido: o filho pode **registrar a compra no celular na hora**; quando o casal importa a fatura, a compra importada é conciliada com a registrada pelo filho (identificada pelo cartão adicional). Se errado: o filho só categoriza depois da importação.
+  - Inferido: o limite mensal do cartão adicional é **cadastrado pelo casal** no app; o app mostra quanto já foi usado e avisa perto do limite. O app não bloqueia nada (quem bloqueia é o banco).
+  - Inferido: a **mesada é despesa da família** (categoria própria) e **receita do filho**. Se as contas dos filhos entrarem no app, o Pix da mesada vira transferência entre contas da família? Em aberto (rodada 4), muda os relatórios.
 - **Lançamento manual** de receitas e despesas (como no Minhas Economias).
 - **Importação opcional** de extratos e faturas em **CSV e PDF**.
 - **Relatórios gráficos e análises** (detalhar quais na rodada 3).
 
 ### Regras de negócio levantadas (a confirmar nos PRDs)
 
-- Inferido: **transferência entre contas próprias não é receita nem despesa** (pagamento da fatura do cartão, aplicação/resgate de investimento, transferência entre correntes). Se errado: os relatórios contariam o mesmo gasto duas vezes (na compra e no pagamento da fatura).
-- Inferido: **um lançamento digitado e o mesmo lançamento vindo de uma importação devem ser reconhecidos como um só** (conciliação). Se errado: quem digita na hora e depois importa a fatura duplica gastos.
+- Decidido: **transferência entre contas próprias não é receita nem despesa** (pagamento da fatura do cartão, aplicação/resgate de investimento, transferência entre correntes). Motivo: senão os relatórios contam o mesmo gasto duas vezes.
+- Decidido: **um lançamento digitado e o mesmo lançamento vindo de uma importação são reconhecidos como um só** (conciliação). Motivo: quem digita na hora e depois importa a fatura não pode duplicar gastos.
 - Inferido: a despesa no cartão é registrada **na data da compra**, e o cartão tem **fatura por ciclo** (fechamento e vencimento) e **compras parceladas**. Se errado: muda como o orçamento do mês é calculado (competência x caixa); ver Pendências.
 - Inferido: cada compra no cartão guarda **qual cartão (titular ou adicional de qual filho) fez a compra**, o que permite ver os gastos de cada filho.
 
@@ -55,13 +59,15 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 
 - Inferido: **os dados financeiros não podem ser enviados a serviços de terceiros que possam lê-los** (serve: Problema/privacidade). Em aberto o quanto isso restringe: só nos aparelhos da família, servidor próprio, nuvem com criptografia (rodada 2).
 - Inferido: **os dois administradores precisam ver os mesmos dados**, lançando cada um do seu aparelho (serve: casal lança gastos). Isso obriga algum tipo de sincronização ou servidor; é a principal tensão com a privacidade.
-- Decidido: **celulares e computadores** (serve: casal lança gastos onde estiver).
-- Decidido: **servidor próprio da família, que pode não ficar ligado o tempo todo**, e **nenhum custo adicional** para rodar (serve: privacidade; restrição declarada).
+- Decidido: **celulares Android e computadores Windows** (serve: casal lança gastos onde estiver). Sem iPhone: a questão de custo da App Store e dos limites do PWA no iOS deixa de existir.
+- Decidido: **servidor num dos computadores Windows de casa, que pode não ficar ligado o tempo todo**, e **nenhum custo adicional** para rodar (serve: privacidade; restrição declarada).
 - Inferido (consequência das duas acima): **o app funciona sem o servidor** (offline-first / local-first). Cada aparelho guarda sua cópia, lança offline e sincroniza quando o servidor está acessível. O servidor é o ponto de encontro e a cópia de referência, não um requisito para usar. Se errado (app só funciona com servidor ligado): ninguém lança quando o servidor está desligado.
+- Decidido: **sincronização só pelo Wi-Fi de casa** (serve: privacidade, custo zero). O servidor não fica exposto à internet; não há acesso remoto, túnel nem serviço de terceiro. Consequência aceita: o que um lança na rua só aparece para os outros depois que os dois aparelhos sincronizarem em casa.
+- Inferido: o servidor roda **em segundo plano no Windows, iniciando com o computador**, e os aparelhos **descobrem e sincronizam sozinhos** ao entrar no Wi-Fi de casa (serve: operação automática). Se errado: alguém precisa abrir o servidor ou apertar "sincronizar".
 - Inferido: como dois aparelhos podem alterar o mesmo dado offline, a sincronização precisa de **regra de conflito** definida (ex.: mesma transação editada nos dois celulares).
 - Inferido: **o servidor filtra o que cada usuário recebe** (serve: filhos não veem além do que é deles). O aparelho de um filho não pode receber a base da família inteira e esconder na tela; recebe só os dados dele. Restringe o desenho da sincronização (não é cópia integral para todos).
 - Inferido: **operação o mais automática possível**: instalação simples, atualização e cópia de segurança sem intervenção (serve: pedido do casal, servidor doméstico).
-- Inferido: **sem custo** exclui loja de aplicativos paga. Publicar na App Store exige conta paga de desenvolvedor (a verificar); se alguém usa iPhone, a opção provável é app web instalável (PWA), cujo armazenamento offline no iOS tem limitações (a verificar). Android permite instalar APK direto.
+- Inferido: no celular, app Android **instalado direto (APK)**, sem loja; no computador, app Windows ou web local. A escolha entre app nativo, multiplataforma ou web fica para o TRD (consultar versões atuais).
 - Inferido: **importação de PDF depende do layout de cada banco**; o suporte é por banco/emissor, e um layout novo pode quebrar a importação (serve: importação opcional). CSV/OFX é mais estável quando o banco oferece.
 
 ## Não-funcionais
@@ -74,7 +80,7 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Dados sensíveis | Decidido | dados financeiros da família; privacidade é o requisito central |
 | Disponibilidade e falha | Decidido (parcial) | servidor pode ficar desligado: app funciona offline e sincroniza depois. Não pode perder dados: cópia de segurança automática e sem custo (destino em aberto) |
 | Integrações externas | Decidido | nenhuma: sem bancos, sem cotação |
-| Onde roda | Decidido (parcial) | celulares e computadores; servidor da família, nem sempre ligado; sistemas operacionais e máquina do servidor: rodada 3 |
+| Onde roda | Decidido | celulares Android, computadores Windows; servidor num computador Windows de casa, nem sempre ligado; sincronização só na rede de casa |
 | Quem opera | Decidido (parcial) | a família, querendo o mínimo de manutenção: tudo automático |
 | Restrições declaradas | Decidido | sem Open Finance; nenhum custo adicional para rodar |
 
@@ -89,8 +95,8 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Contas correntes, cartões, investimentos | Decidido | resposta 1, rodada 1 | 2026-11-02 |
 | Casal administra; todas as despesas comuns; contas conjuntas | Decidido | resposta 2, rodada 1 | 2026-11-02 |
 | Filhos com cartão adicional; desejável que usem o app | Decidido | resposta 2, rodada 1 | 2026-11-02 |
-| Transferência entre contas próprias não conta como despesa | Inferido | regra usual; confirmar no PRD | 2026-11-02 |
-| Conciliação de digitado x importado | Inferido | consequência de ter as duas entradas | 2026-11-02 |
+| Transferência entre contas próprias não conta como despesa | Decidido | confirmado na rodada 3 | 2026-11-02 |
+| Conciliação de digitado x importado | Decidido | confirmado na rodada 3 | 2026-11-02 |
 | Despesa do cartão na data da compra, com fatura e parcelas | Inferido | confirmar (competência x caixa) | 2026-11-02 |
 | Compra identifica o cartão (titular / adicional) | Inferido | permite ver gastos de cada filho | 2026-11-02 |
 | Celulares e computadores | Decidido | resposta 1, rodada 2 | 2026-11-02 |
@@ -102,33 +108,38 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Filhos anotam/categorizam, acompanham limite ou mesada, só veem o que é deles | Decidido | resposta 2, rodada 2 | 2026-11-02 |
 | Filhos poderão ter contas próprias no futuro | Decidido | resposta 2, rodada 2 | 2026-11-02 |
 | Investimentos por aplicação, sem cotação | Decidido | resposta 3, rodada 2 (opção b) | 2026-11-02 |
-| Custo da conta de desenvolvedor Apple; limites do PWA offline no iOS | Em aberto | verificar se alguém usa iPhone | 2026-11-02 |
+| Android e Windows (sem iPhone) | Decidido | resposta 1, rodada 3 | 2026-11-02 |
+| Servidor num computador Windows de casa | Decidido | resposta 1, rodada 3 | 2026-11-02 |
+| Sincronização só no Wi-Fi de casa, sem acesso remoto | Decidido | resposta 2, rodada 3 | 2026-11-02 |
+| Servidor em segundo plano; sincronização automática ao chegar em casa | Inferido | operação automática | 2026-11-02 |
+| Filhos já têm conta própria (mesada por Pix) e limite mensal no cartão adicional | Decidido | resposta 3, rodada 3 | 2026-11-02 |
+| Filho registra a compra na hora; conciliada com a fatura importada | Inferido | estende a conciliação ao filho | 2026-11-02 |
+| Limite do cartão adicional cadastrado pelo casal; app avisa, não bloqueia | Inferido | o bloqueio é do banco | 2026-11-02 |
+| Mesada: despesa da família, receita do filho | Inferido | depende de as contas dos filhos entrarem no app | 2026-11-02 |
 
 ## Alternativas descartadas
 
 - **Continuar no Minhas Economias com Open Finance:** descartado pela privacidade.
 - **Dados só num servidor sempre ligado (cliente-servidor clássico):** descartado; o servidor pode ficar desligado.
 - **Servidor alugado (VPS) ou nuvem paga:** descartado; nenhum custo adicional.
+- **Acesso remoto ao servidor (túnel/VPN gratuito de terceiro):** descartado na rodada 3; sincronização só em casa.
+- **App para iPhone / PWA:** desnecessário; a família usa só Android.
 - **Cotação automática de investimentos:** descartada na rodada 2 (opção b).
 - **Melhorar a planilha:** não discutido como opção; a ausência de análises e gráficos é a queixa. (Registrar se o casal quiser reconsiderar.)
 
 ## Pendências
 
-Rodada 3 (perguntas feitas em 2026-11-02):
+Rodada 4 (perguntas feitas em 2026-11-02):
 
-1. **Sistemas operacionais** dos celulares e computadores de cada um, e **que máquina é o servidor**. Destrava: plataforma dos apps (nativo, PWA, APK), custo zero, como o servidor é instalado.
-2. **Sincronizar fora de casa.** Só quando o aparelho está na rede de casa, ou também na rua? Destrava: se é preciso acesso remoto ao servidor (túnel/VPN, possivelmente serviço de terceiro gratuito, sem acesso aos dados).
-3. **Limite e mesada dos filhos.** Como funcionam hoje, e se os filhos também lançam gastos fora do cartão (dinheiro, Pix próprio). Destrava: PRD do perfil dependente.
+1. **Contas dos filhos no app.** As contas individuais (mesada) entram no app agora? Os relatórios do casal incluem os gastos dos filhos (cartão adicional e conta própria) ou a mesada é a despesa da família e o resto é só do filho? Destrava: regra da mesada, perfis, relatórios.
+2. **Relatórios, análises e orçamento**, e **competência x caixa** (compra no cartão conta no mês da compra ou no mês em que a fatura é paga). Destrava: PRD de relatórios e orçamento.
+3. **Bancos, cartões e corretoras** usados, e **histórico a migrar** (planilha atual; exportação do Minhas Economias, se existir). Destrava: PRD de importação e de migração.
 
 Para rodadas seguintes:
 
-- Os relatórios do casal incluem as contas próprias dos filhos (quando existirem)?
 - Destino da cópia de segurança, sem custo (disco externo, nuvem que já usam, com os dados criptografados).
 - Investimentos: como entra o valor atual (à mão, importação de extrato da corretora), quais rendimentos acompanhar, imposto de renda.
-- Bancos e emissores de cartão usados (quais extratos/faturas importar).
-- Migração do histórico (planilha atual, exportação do Minhas Economias).
-- Relatórios e análises desejados; orçamento por categoria e metas.
 - Categorias: aproveitar as do Minhas Economias ou criar do zero.
-- Competência x caixa no orçamento do mês.
+- Lançamentos recorrentes (contas fixas) e parcelas futuras.
 - Conhecimento técnico do casal (quem instala e mantém o servidor).
-- Confirmar as regras inferidas: transferência entre contas próprias não é despesa; conciliação digitado x importado.
+- Senha/bloqueio do app nos celulares; o que acontece se um celular for perdido.
