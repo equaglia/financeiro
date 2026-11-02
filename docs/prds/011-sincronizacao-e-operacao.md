@@ -1,7 +1,7 @@
 ---
 prd_number: "011"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: crítica
 created: 2026-11-03
 issue: ""
@@ -43,9 +43,9 @@ references:
 ### Fora do escopo
 
 - Acesso ao servidor fora de casa, por VPN ou túnel (decidido no brainstorm).
-- Sincronização entre aparelhos sem o servidor (celular com celular) *(premissa — confirme ou corrija)*.
+- Sincronização entre aparelhos sem o servidor (celular com celular).
 - Mais de um servidor ou servidor sempre ligado na nuvem (custo zero, privacidade).
-- Loja de aplicativos: o app Android é instalado direto (APK), sem Play Store *(premissa — confirme ou corrija; decisão técnica no TRD)*.
+- Loja de aplicativos: o app Android é instalado direto (APK), sem Play Store (decisão técnica no TRD).
 
 ## 3. Funcionalidades
 
@@ -67,7 +67,7 @@ Como membro da família, quero lançar e consultar tudo fora de casa, para usar 
 Como membro da família, quero que meu aparelho sincronize sozinho quando chego em casa, para não precisar lembrar.
 
 **Rules:**
-- Com o aparelho no Wi-Fi de casa e o servidor ligado, a sincronização acontece sozinha: ao abrir o app e periodicamente com o app aberto *(premissa — confirme ou corrija; sincronizar com o app fechado depende de permissões do Android, ver TRD)*.
+- Com o aparelho no Wi-Fi de casa e o servidor ligado, a sincronização acontece sozinha: ao abrir o app e periodicamente com o app aberto (sincronizar com o app fechado depende de permissões do Android, ver TRD).
 - Botão **sincronizar agora**.
 - Cada aparelho mostra: última sincronização, lançamentos pendentes de envio, e se o servidor está acessível agora.
 - Cada aparelho recebe só o que o membro pode ver (PRD 001, US05).
@@ -77,7 +77,7 @@ Como membro da família, quero que meu aparelho sincronize sozinho quando chego 
 - Servidor desligado ou fora do Wi-Fi de casa → nenhum erro incômodo; o app só indica "servidor não encontrado" no status.
 - Sincronização interrompida no meio (saiu de casa) → nada se perde nem se duplica; continua na próxima vez.
 - Aparelho revogado → servidor recusa e o app apaga os dados locais (PRD 001, US07).
-- Primeira sincronização de um aparelho novo com 9 anos de histórico → mostra o progresso; o app pode ser usado com os dados já recebidos *(premissa — confirme ou corrija)*.
+- Primeira sincronização de um aparelho novo com 9 anos de histórico → mostra o progresso; o app pode ser usado com os dados já recebidos.
 
 ### US03: Resolver conflitos de edição
 
@@ -86,12 +86,12 @@ Como administrador, quero que edições feitas em dois aparelhos fora de casa se
 **Rules:**
 - Lançamentos **novos** feitos em aparelhos diferentes nunca conflitam: todos entram.
 - O mesmo lançamento editado em dois aparelhos: as alterações em **campos diferentes** se juntam (ex.: um mudou a categoria, outro a observação).
-- O **mesmo campo** alterado nos dois: vale a alteração do **administrador** sobre a do dependente (PRD 001, US06); entre dois administradores, vale a **mais recente** *(premissa — confirme ou corrija)*.
-- Lançamento **excluído** num aparelho e **editado** no outro: prevalece a edição (não se perde dado), e o lançamento vai para a lista de conflitos para o casal decidir *(premissa — confirme ou corrija)*.
+- O **mesmo campo** alterado nos dois: vale a alteração do **administrador** sobre a do dependente (PRD 001, US06); entre dois administradores, vale a **mais recente**.
+- Lançamento **excluído** num aparelho e **editado** no outro: prevalece a edição (não se perde dado), e o lançamento vai para a lista de conflitos para o casal decidir.
 - Os casos resolvidos pela regra ficam numa **lista de conflitos**, onde o casal vê o que cada um fez e pode trocar a escolha.
 
 **Edge cases:**
-- Relógio errado num aparelho (data/hora atrasada) → a regra "mais recente" pode errar; a lista de conflitos permite corrigir *(premissa — confirme ou corrija; o TRD deve reduzir a dependência do relógio)*.
+- Relógio errado num aparelho (data/hora atrasada) → a regra "mais recente" pode errar; a lista de conflitos permite corrigir (o TRD deve reduzir a dependência do relógio).
 - Categoria juntada num aparelho enquanto o outro lançava nela → os lançamentos novos vão para a categoria que ficou.
 - Mesma compra digitada pelos dois → não é conflito de sincronização: é duplicidade, tratada pela conciliação (PRD 004), que aponta prováveis duplicados.
 
@@ -101,13 +101,13 @@ Como o administrador que cuida do servidor, quero instalá-lo com um assistente,
 
 **Rules:**
 - Instalador para Windows com assistente em português: instala, configura para iniciar com o computador e rodar em segundo plano, e leva à criação da família (PRD 001, US01).
-- O assistente cuida das permissões do Windows necessárias (ex.: liberar o acesso na rede de casa) explicando cada pedido *(premissa — confirme ou corrija)*.
+- O assistente cuida das permissões do Windows necessárias (ex.: liberar o acesso na rede de casa) explicando cada pedido.
 - No fim, o assistente gera a **chave de recuperação** (US06) e pede para guardá-la (imprimir ou anotar), e configura o destino da cópia de segurança.
-- O servidor funciona sempre que o computador estiver ligado, **mesmo sem ninguém logado** no Windows *(premissa — confirme ou corrija)*.
+- O servidor funciona sempre que o computador estiver ligado, **mesmo sem ninguém logado** no Windows.
 - Guia de instalação passo a passo, com imagens, em `docs/` (entregável deste PRD).
 
 **Edge cases:**
-- Computador entra em suspensão → o servidor fica indisponível enquanto o computador dorme; os aparelhos sincronizam quando ele acordar. O guia explica como ajustar a suspensão, se a família quiser *(premissa — confirme ou corrija)*.
+- Computador entra em suspensão → o servidor fica indisponível enquanto o computador dorme; os aparelhos sincronizam quando ele acordar. O guia explica como ajustar a suspensão, se a família quiser.
 - Computador usado por outras pessoas → o servidor não aparece no dia a dia; só um ícone discreto com o status.
 - Antivírus ou firewall bloqueia → o assistente detecta que os aparelhos não conseguem chegar ao servidor e mostra o que fazer.
 
@@ -116,8 +116,8 @@ Como o administrador que cuida do servidor, quero instalá-lo com um assistente,
 Como o administrador que cuida do servidor, quero que as atualizações cheguem com o mínimo de trabalho, para manter tudo funcionando.
 
 **Rules:**
-- O servidor avisa quando há versão nova e se atualiza com um clique, sem perder dados, fazendo antes uma cópia de segurança *(premissa — confirme ou corrija; atualização totalmente automática é a alternativa)*.
-- Os aparelhos recebem a versão nova do app **pelo servidor de casa** ao sincronizar, e o membro confirma a instalação *(premissa — confirme ou corrija; como o app não está em loja, a forma de distribuir é decisão técnica do TRD)*.
+- O servidor avisa quando há versão nova e se atualiza com um clique, sem perder dados, fazendo antes uma cópia de segurança.
+- Os aparelhos recebem a versão nova do app **pelo servidor de casa** ao sincronizar, e o membro confirma a instalação (como o app não está em loja, a forma de distribuir é decisão técnica do TRD).
 - Aparelho com versão antiga continua sincronizando enquanto as versões forem compatíveis; quando não forem, o app pede para atualizar antes de sincronizar.
 - Instalação por cima, sem desinstalar: dados do aparelho preservados.
 
@@ -130,15 +130,15 @@ Como o administrador que cuida do servidor, quero que as atualizações cheguem 
 Como administrador, quero que os dados sejam copiados automaticamente para o OneDrive ou para um disco externo, para não perder o histórico se o computador quebrar.
 
 **Rules:**
-- Destino escolhido na instalação e alterável: **pasta do OneDrive** do computador ou **disco externo**; pode haver os dois *(premissa — confirme ou corrija)*.
-- A cópia é feita **automaticamente** enquanto o servidor está ligado: uma por dia e logo após mudanças grandes (migração, importação) *(premissa — confirme ou corrija)*.
+- Destino escolhido na instalação e alterável: **pasta do OneDrive** do computador ou **disco externo**; pode haver os dois.
+- A cópia é feita **automaticamente** enquanto o servidor está ligado: uma por dia e logo após mudanças grandes (migração, importação).
 - A cópia é **criptografada no computador** antes de ir para o destino, com a **chave de recuperação** do casal. Sem a chave, a cópia não pode ser aberta.
-- Guarda as últimas **30 cópias diárias** e **12 mensais** *(premissa — confirme ou corrija)*.
+- Guarda as últimas **30 cópias diárias** e **12 mensais**.
 - O painel (US08) e os aparelhos dos administradores mostram a data da última cópia bem-sucedida.
 
 **Edge cases:**
 - Disco externo desconectado ou OneDrive cheio → a cópia falha, o servidor tenta de novo e avisa os administradores no próximo uso.
-- Nenhuma cópia há **7 dias** → aviso destacado aos administradores *(premissa — confirme ou corrija)*.
+- Nenhuma cópia há **7 dias** → aviso destacado aos administradores.
 - Chave de recuperação perdida → as cópias existentes ficam inúteis; o assistente permite gerar uma chave nova (com o servidor funcionando), e as próximas cópias usam a nova. O guia explica guardar a chave em dois lugares.
 
 ### US07: Restaurar depois de perder o computador do servidor
@@ -147,8 +147,8 @@ Como o administrador que cuida do servidor, quero reinstalar o servidor num comp
 
 **Rules:**
 - No assistente de instalação, opção **restaurar de uma cópia de segurança**: escolhe a cópia (OneDrive ou disco), informa a chave de recuperação, e o servidor volta com a família, membros, aparelhos e todos os dados.
-- Depois de restaurar, os aparelhos já vinculados reconhecem o servidor novo e sincronizam; o que tinham de mais novo que a cópia é enviado e se junta (US03) *(premissa — confirme ou corrija)*.
-- **Sem cópia de segurança**: um aparelho de **administrador** sincronizado tem os dados da família inteira e pode reconstruir o servidor *(premissa — confirme ou corrija)*.
+- Depois de restaurar, os aparelhos já vinculados reconhecem o servidor novo e sincronizam; o que tinham de mais novo que a cópia é enviado e se junta (US03).
+- **Sem cópia de segurança**: um aparelho de **administrador** sincronizado tem os dados da família inteira e pode reconstruir o servidor.
 - Recuperação quando os dois administradores esqueceram o PIN (PRD 001, US04): no computador do servidor, com a chave de recuperação.
 - Guia de recuperação passo a passo em `docs/` (entregável deste PRD), incluindo um **teste de restauração** recomendado uma vez por ano.
 
@@ -297,3 +297,4 @@ Computador do servidor quebrou
 - **2026-11-03:** Regra de conflito: campos diferentes se juntam; mesmo campo, administrador sobre dependente, e entre administradores o mais recente; exclusão x edição, prevalece a edição. Motivo: não perder dado e ser previsível (premissas a confirmar).
 - **2026-11-03:** Exportação completa em formato aberto. Motivo: a família ficou presa ao Minhas Economias quando ele mudou as regras.
 - **2026-11-03:** `depends_on: ["001"]`. Critério: vínculo de aparelho, filtro por perfil e revogação vêm do PRD 001. Os demais PRDs dependem deste para funcionar em vários aparelhos, mas este não depende do conteúdo deles.
+- **2026-11-03:** 1ª revisão do casal: as 20 premissas foram aceitas como estão (inclusive a regra de conflitos, a chave de recuperação só com o casal, cópias diárias com 30 diárias e 12 mensais, atualização do app pelo servidor de casa, avisos de 7 dias). Marcas removidas; as notas que apontam para o TRD foram mantidas. Status mantido em `rascunho` até a revisão final.
