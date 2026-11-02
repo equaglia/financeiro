@@ -18,7 +18,8 @@ Aplicação de controle financeiro da família. Docs em português.
 - PRD 008 (relatórios e patrimônio): aguardando a 1ª revisão.
 - PRD 009 (filhos: limite e semanada): aguardando a 1ª revisão.
 - PRD 010 (apoio ao IR): aguardando a 1ª revisão. Fontes da Receita consultadas em 2026-11-03 (seção 8); limite de educação e conversão do exterior a verificar.
-- PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Sem as amostras, seguir para o 011 (sincronização e operação).
+- PRD 011 (sincronização e operação): aguardando a 1ª revisão.
+- PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Todos os outros PRDs já estão escritos. Depois do 004: revisão final de todos (coerência entre PRDs), depois TRD e ADRs (skill `escrever-trd`) e glossário.
 - Amostras: o casal anexa na conversa; analisar numa pasta isolada do scratchpad; **nunca gravar no repositório** (só o formato, sem nomes nem valores). Nomes de pessoas não entram nos documentos.
 
 Fluxo de documentos:
