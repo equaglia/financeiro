@@ -1,7 +1,7 @@
 ---
 prd_number: "008"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: alta
 created: 2026-11-03
 issue: ""
@@ -44,9 +44,9 @@ references:
 
 ### Fora do escopo
 
-- Projeção do patrimônio ou do saldo para meses futuros *(premissa — confirme ou corrija; os previstos mostram só os compromissos, PRD 003)*.
-- Relatórios configuráveis pelo usuário (montar o próprio relatório) *(premissa — confirme ou corrija)*.
-- Comparação com índices de inflação ou com outras famílias *(premissa — confirme ou corrija)*.
+- Projeção do patrimônio ou do saldo para meses futuros.
+- Relatórios configuráveis pelo usuário (montar o próprio relatório).
+- Comparação com índices de inflação ou com outras famílias.
 - Relatórios do IR: PRD 010.
 - Relatórios da PJ (fora da 1ª versão).
 
@@ -65,7 +65,7 @@ Como administrador, quero ver quanto gastei em cada grupo e categoria no mês, p
 
 **Edge cases:**
 - Mês sem lançamentos → mensagem de mês vazio, não gráfico zerado.
-- Categoria com valor líquido negativo no mês (estorno maior que o gasto) → mostrada à parte, sem distorcer o gráfico *(premissa — confirme ou corrija)*.
+- Categoria com valor líquido negativo no mês (estorno maior que o gasto) → mostrada à parte, sem distorcer o gráfico.
 - Mês ainda em curso → indicado como parcial (faturas não pagas ainda não entraram; regime de caixa).
 
 ### US02: Ver a evolução ao longo dos meses
@@ -74,14 +74,14 @@ Como administrador, quero ver como despesas e receitas mudaram mês a mês, para
 
 **Rules:**
 - Gráfico mês a mês do total de despesas e de receitas, e de qualquer grupo ou categoria escolhida.
-- Período escolhido livremente, de 2017 (histórico migrado) até o mês atual; padrão: últimos 12 meses *(premissa — confirme ou corrija)*.
+- Período escolhido livremente, de 2017 (histórico migrado) até o mês atual; padrão: últimos 12 meses.
 - Comparações: com o **mesmo mês do ano anterior** e com a **média dos últimos 12 meses**, em valor e percentual.
 - Visão anual: totais por ano, para comparar anos inteiros.
 - Os valores são nominais (sem correção pela inflação).
 
 **Edge cases:**
 - Categoria criada ou juntada no meio do período → o histórico segue a categoria atual (lançamentos movidos na junção, PRD 003).
-- Meses do histórico com diferença de fatura não resolvida (PRD 005, US05) → incluídos, com indicação discreta *(premissa — confirme ou corrija)*.
+- Meses do histórico com diferença de fatura não resolvida (PRD 005, US05) → incluídos, com indicação discreta.
 - Mês atual parcial → destacado para não parecer queda.
 
 ### US03: Ver receitas, despesas e saldo do mês
@@ -91,7 +91,7 @@ Como administrador, quero ver quanto entrou, quanto saiu e quanto sobrou em cada
 **Rules:**
 - Por mês: receitas, despesas, **saldo** (receitas − despesas) e **taxa de poupança** (saldo ÷ receitas).
 - Gráfico de barras de receitas e despesas com a linha do saldo, mês a mês.
-- Valorização de investimentos não entra (é rendimento, PRD 006); aparece separada como "rendimento dos investimentos no mês" para referência *(premissa — confirme ou corrija)*.
+- Valorização de investimentos não entra (é rendimento, PRD 006); aparece separada como "rendimento dos investimentos no mês" para referência.
 
 **Edge cases:**
 - Mês com receita zero → taxa de poupança "não se aplica".
@@ -103,30 +103,30 @@ Como administrador, quero digitar a cotação do dólar no fechamento de cada m�
 
 **Rules:**
 - Uma cotação de dólar para real por mês, digitada pelo casal.
-- O app pede a cotação junto com o lembrete de atualização dos investimentos no início do mês (PRD 006, US07) *(premissa — confirme ou corrija)*.
+- O app pede a cotação junto com o lembrete de atualização dos investimentos no início do mês (PRD 006, US07).
 - A cotação pode ser corrigida depois; o patrimônio daquele mês é recalculado.
 - A cotação vale para o patrimônio. A conversão para o IR segue regra própria da Receita (PRD 010).
 
 **Edge cases:**
 - Mês sem cotação → usa a do último mês informado e marca o patrimônio daquele mês como "câmbio estimado".
-- Meses do histórico migrado (desde 2017) sem cotação → o casal pode digitar as cotações antigas, uma por mês; enquanto isso, vale a regra anterior *(premissa — confirme ou corrija)*.
+- Meses do histórico migrado (desde 2017) sem cotação → o casal pode digitar as cotações antigas, uma por mês; enquanto isso, vale a regra anterior.
 
 ### US05: Ver o patrimônio da família no fechamento do mês
 
 Como administrador, quero ver quanto a família tem no fechamento de cada mês, para acompanhar a situação financeira de forma completa.
 
 **Rules:**
-- Patrimônio = contas correntes + dinheiro em espécie + investimentos (valor atual, PRD 006) + previdência + exterior (dólar × câmbio do mês) − **saldo devedor dos cartões** (faturas fechadas não pagas e compras da fatura aberta) *(premissa — confirme ou corrija o desconto dos cartões)*.
+- Patrimônio = contas correntes + dinheiro em espécie + investimentos (valor atual, PRD 006) + previdência + exterior (dólar × câmbio do mês) − **saldo devedor dos cartões** (faturas fechadas não pagas e compras da fatura aberta).
 - Só contas cujo dono é a família; contas dos filhos e administradas ficam de fora (decisão 3).
 - Composição: por tipo (corrente, investimento, previdência, exterior, dinheiro), por instituição e por conta, em valor e percentual.
 - Cada parcela mostra a data da última atualização (saldo conferido, valor de investimento, extrato do exterior).
 - Patrimônio "de hoje" além do fechamento dos meses.
-- Imóveis, veículos e outros bens fora das contas não entram *(premissa — confirme ou corrija; poderiam ser cadastrados com valor estimado)*.
+- Imóveis, veículos e outros bens fora das contas não entram.
 
 **Edge cases:**
 - Investimento sem atualização no mês → usa o último valor, com a data.
 - Conta no exterior sem extrato no mês → usa o último saldo, com a data (PRD 002, US03).
-- Parcelas futuras de compras já feitas → não descontadas do patrimônio (são compromissos futuros, PRD 003) *(premissa — confirme ou corrija)*.
+- Parcelas futuras de compras já feitas → não descontadas do patrimônio (são compromissos futuros, PRD 003).
 
 ### US06: Ver a evolução do patrimônio
 
@@ -134,11 +134,11 @@ Como administrador, quero ver o patrimônio mês a mês ao longo dos anos, para 
 
 **Rules:**
 - Gráfico do patrimônio no fechamento de cada mês, total e empilhado por tipo.
-- Variação no mês e no ano, separada em **saldo do mês** (receitas − despesas, US03), **rendimento dos investimentos** (PRD 006) e **variação cambial** do exterior *(premissa — confirme ou corrija)*.
+- Variação no mês e no ano, separada em **saldo do mês** (receitas − despesas, US03), **rendimento dos investimentos** (PRD 006) e **variação cambial** do exterior.
 - Período desde o início dos dados.
 
 **Edge cases:**
-- Meses antigos sem valores de investimento (o Minhas Economias tinha só saldo de conta) → usa os saldos migrados das contas de investimento *(premissa — confirme ou corrija)*.
+- Meses antigos sem valores de investimento (o Minhas Economias tinha só saldo de conta) → usa os saldos migrados das contas de investimento.
 - Conta que passa da família para um filho → sai do patrimônio da família em todo o histórico (PRD 002, US04).
 
 ### US07: Ver quanto se gasta com cada filho
@@ -146,7 +146,7 @@ Como administrador, quero ver o patrimônio mês a mês ao longo dos anos, para 
 Como administrador, quero ver os gastos de cada filho (cartão adicional e semanada), para conversar com eles com números na mão.
 
 **Rules:**
-- Por filho e por mês: compras no cartão adicional dele (por categoria), semanada e outras despesas lançadas em nome dele *(premissa — confirme ou corrija; "Despesas dos filhos", sugerida em `docs/categorias-iniciais.md`)*.
+- Por filho e por mês: compras no cartão adicional dele (por categoria), semanada e outras despesas lançadas em nome dele.
 - Evolução mês a mês por filho.
 - Contas próprias dos filhos não entram (o que o filho faz com o dinheiro dele é dele).
 
@@ -161,7 +161,7 @@ Como administrador, quero ver relatórios das contas dos filhos e das contas adm
 **Rules:**
 - Para cada filho e para cada conta administrada: saldo, receitas e despesas por categoria no mês, e evolução — os mesmos relatórios das US01 a US03, filtrados para aquela conta.
 - Nunca somados aos da família.
-- O dependente vê os relatórios das próprias contas e do próprio cartão adicional (gastos por categoria e evolução) e nada mais (PRD 001) *(premissa — confirme ou corrija)*.
+- O dependente vê os relatórios das próprias contas e do próprio cartão adicional (gastos por categoria e evolução) e nada mais (PRD 001).
 
 **Edge cases:**
 - Conta administrada encerrada → relatórios do período em que existiu.
@@ -172,7 +172,7 @@ Como administrador, quero ver relatórios das contas dos filhos e das contas adm
 Como administrador, quero exportar um relatório, para guardar ou abrir numa planilha.
 
 **Rules:**
-- Exportação em planilha (dados da tabela) e em PDF (gráfico e tabela) *(premissa — confirme ou corrija os formatos)*.
+- Exportação em planilha (dados da tabela) e em PDF (gráfico e tabela).
 - O arquivo é gerado no aparelho e salvo onde o usuário escolher; o app não envia nada para fora.
 - Também exportação dos lançamentos filtrados (período, conta, categoria).
 
@@ -212,7 +212,7 @@ Fechamento do mês                  ▼
 | Patrimônio converte o exterior pelo câmbio digitado do mês | decisão do casal | saldo de US$ 1.000, câmbio 5,00: R$ 5.000 no patrimônio |
 | Patrimônio exclui contas dos filhos e administradas e desconta o devido nos cartões | o que é da família, líquido | movimentar conta do filho e administrada: patrimônio não muda; fatura fechada de 3.000: patrimônio −3.000 |
 | Cada parte do patrimônio mostra a data da última atualização | saber o que está desatualizado | investimento atualizado há 2 meses aparece com a data |
-| Relatórios com 9 anos de dados abrem no celular em até 3 s *(premissa — confirme ou corrija)* | se demorar, o casal não usa | cronometrar a evolução de 2017 a hoje |
+| Relatórios com 9 anos de dados abrem no celular em até 3 s | se demorar, o casal não usa | cronometrar a evolução de 2017 a hoje |
 | Dependente vê só os relatórios das próprias contas e cartão | privacidade da família | abrir relatórios no celular do filho: nada da família |
 
 ### 5b. Métricas de sucesso
@@ -294,3 +294,4 @@ Fechamento do mês                  ▼
 - **2026-11-03:** Patrimônio sem contas dos filhos e administradas; exterior pelo câmbio digitado no fechamento do mês. Motivo: decisões do brainstorm (rodada 5) e PRD 002.
 - **2026-11-03:** Orçamento x realizado fica no PRD 007; este PRD cobre as outras três análises pedidas. Motivo: divisão da consolidação.
 - **2026-11-03:** `depends_on: ["001", "002", "003", "006"]`. Critério: visibilidade por perfil (001), contas, donos e exterior (002), mês de referência e categorias (003), valor atual e rendimento dos investimentos (006).
+- **2026-11-03:** 1ª revisão do casal: as 18 premissas foram aceitas como estão (inclusive: patrimônio desconta o devido nos cartões e não as parcelas futuras; imóveis e veículos fora; variação do patrimônio separada em saldo, rendimento e câmbio; relatórios em até 3 s). Marcas removidas; status mantido em `rascunho` até a revisão final.
