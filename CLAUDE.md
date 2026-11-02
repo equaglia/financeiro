@@ -15,7 +15,7 @@ Aplicação de controle financeiro da família. Docs em português.
 - PRD 006 (investimentos e previdência): 1ª revisão aprovada em 2026-11-03.
 - PRD 007 (orçamento): 1ª revisão aprovada em 2026-11-03.
 - PRD 008 (relatórios e patrimônio): 1ª revisão aprovada em 2026-11-03.
-- PRD 009 (filhos: limite e semanada): aguardando a 1ª revisão.
+- PRD 009 (filhos: limite e semanada): 1ª revisão aprovada em 2026-11-03.
 - PRD 010 (apoio ao IR): aguardando a 1ª revisão. Fontes da Receita consultadas em 2026-11-03 (seção 8); limite de educação e conversão do exterior a verificar.
 - PRD 011 (sincronização e operação): aguardando a 1ª revisão.
 - PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Todos os outros PRDs já estão escritos. Depois do 004: revisão final de todos (coerência entre PRDs), depois TRD e ADRs (skill `escrever-trd`) e glossário.

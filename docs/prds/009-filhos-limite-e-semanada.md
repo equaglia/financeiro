@@ -1,7 +1,7 @@
 ---
 prd_number: "009"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: média
 created: 2026-11-03
 issue: ""
@@ -43,9 +43,9 @@ references:
 ### Fora do escopo
 
 - Bloquear o cartão ou mudar o limite no banco (sem integração com bancos).
-- Metas de poupança dos filhos, "cofrinhos" ou recompensas *(premissa — confirme ou corrija)*.
-- Pedido de dinheiro extra pelo app (filho pede, casal aprova) *(premissa — confirme ou corrija)*.
-- Semanada condicionada a tarefas *(premissa — confirme ou corrija)*.
+- Metas de poupança dos filhos, "cofrinhos" ou recompensas.
+- Pedido de dinheiro extra pelo app (filho pede, casal aprova).
+- Semanada condicionada a tarefas.
 
 ## 3. Funcionalidades
 
@@ -56,7 +56,7 @@ Como administrador, quero definir o limite mensal do cartão adicional de cada f
 **Rules:**
 - Valor do limite por cartão adicional, válido a partir de um ciclo de fatura (PRD 002, US05).
 - Mudar o limite vale a partir do ciclo escolhido; o histórico de limites fica guardado.
-- O limite pode ser o mesmo configurado no banco ou um limite combinado em família, menor que o do banco *(premissa — confirme ou corrija)*.
+- O limite pode ser o mesmo configurado no banco ou um limite combinado em família, menor que o do banco.
 - Só administradores definem o limite; o filho só vê.
 
 **Edge cases:**
@@ -71,13 +71,13 @@ Como filho, quero saber quanto ainda posso gastar no meu cartão neste ciclo, pa
 - Consumo do ciclo = compras no cartão adicional com data dentro do ciclo de fatura atual (do fechamento anterior até o próximo) − estornos.
 - **Disponível** = limite − consumo; também em percentual.
 - Entram as compras **registradas pelo filho** (PRD 001, US06) e as **importadas ou lançadas pelo casal**; uma compra registrada e depois importada conta uma vez só (conciliação, PRD 004).
-- Compra parcelada consome o limite pelo **valor total** no ciclo da compra, como o banco faz com o limite *(premissa — confirme ou corrija; alternativa: só a parcela do ciclo)*.
+- Compra parcelada consome o limite pelo **valor total** no ciclo da compra, como o banco faz com o limite.
 - O ciclo segue o dia de fechamento do cartão do casal; ao fechar, o consumo recomeça.
 - O casal vê os cartões adicionais de todos os filhos lado a lado.
 
 **Edge cases:**
 - Compra feita e não registrada pelo filho, e fatura ainda não importada → o consumo fica abaixo do real; o app mostra a data da última importação da fatura para o filho saber até quando o número é confiável.
-- Compra internacional com IOF → o IOF conta no consumo *(premissa — confirme ou corrija)*.
+- Compra internacional com IOF → o IOF conta no consumo.
 - Dia de fechamento alterado pelo banco numa fatura (PRD 002, US06) → o ciclo usa a data corrigida.
 
 ### US03: Avisar quando o limite aperta
@@ -85,8 +85,8 @@ Como filho, quero saber quanto ainda posso gastar no meu cartão neste ciclo, pa
 Como filho, quero ser avisado quando estou perto do limite, para segurar os gastos; como administrador, quero saber quando um filho passou do limite.
 
 **Rules:**
-- Aviso ao **filho** ao chegar a **80 %** e ao passar de **100 %** do limite do ciclo *(premissa — confirme ou corrija os percentuais)*.
-- Aviso ao **casal** ao passar de **100 %** *(premissa — confirme ou corrija; o casal também quer o aviso de 80 %?)*.
+- Aviso ao **filho** ao chegar a **80 %** e ao passar de **100 %** do limite do ciclo.
+- Aviso ao **casal** ao passar de **100 %**.
 - Um aviso por limite por ciclo, no próximo uso do app depois de a compra ser registrada ou sincronizada.
 - O casal pode desligar os avisos de um filho.
 
@@ -102,7 +102,7 @@ Como administrador, quero cadastrar a semanada de cada filho uma vez, para que o
 - Por filho: valor, **dia da semana**, conta de origem da família (corrente) e destino (conta individual do filho ou a carteira de dinheiro dele, PRD 002).
 - Gera os pagamentos **previstos** semanais, como uma conta fixa (PRD 003, US04), na categoria Semanada.
 - Mudar o valor vale a partir da data escolhida; o histórico fica.
-- A semanada pode ser pausada (férias, castigo) e retomada *(premissa — confirme ou corrija)*.
+- A semanada pode ser pausada (férias, castigo) e retomada.
 
 **Edge cases:**
 - Semana com feriado ou viagem em que a semanada é paga adiantada → o pagamento confirma o previsto da semana, com a data real.
@@ -142,7 +142,7 @@ Como administrador, quero registrar dinheiro dado aos filhos fora da semanada (p
 
 **Rules:**
 - Transferência da família para a conta ou carteira do filho fora da semanada é **despesa da família**, com a categoria escolhida pelo casal (sugestão: "Despesas dos filhos", `docs/categorias-iniciais.md`) e **receita do filho**, como na semanada.
-- Adiantamento de semanada: confirma previstos futuros, que deixam de ser pagos nas semanas seguintes *(premissa — confirme ou corrija)*.
+- Adiantamento de semanada: confirma previstos futuros, que deixam de ser pagos nas semanas seguintes.
 - Dinheiro devolvido pelo filho à família → receita da família na mesma categoria (abate a despesa) e despesa na conta do filho.
 
 **Edge cases:**
@@ -253,3 +253,4 @@ atrasada (casal vê)
 - **2026-11-03:** Semanada (não mesada), por Pix, como despesa da família e receita do filho. Motivo: decisão do casal (rodada 4; termo corrigido em 2026-11-03).
 - **2026-11-03:** Tela inicial do filho focada em limite, compras, saldo e semanada. Motivo: o casal quer que os filhos usem o app, e hoje eles não se interessam.
 - **2026-11-03:** `depends_on: ["001", "002", "003"]`. Critério: perfil dependente (001), cartão adicional, limite e contas do filho (002), recorrentes e previstos (003). O 004 melhora a exatidão do consumo, mas não é pré-requisito (há registro manual).
+- **2026-11-03:** 1ª revisão do casal: as 10 premissas foram aceitas como estão (inclusive: parcelada consome o limite pelo total; casal avisado só a 100 %; semanada pode ser pausada; IOF conta no limite). Marcas removidas; status mantido em `rascunho` até a revisão final.
