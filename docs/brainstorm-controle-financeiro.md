@@ -162,7 +162,7 @@ Documento de trabalho: guarda decisões, premissas, alternativas descartadas e p
 | Histórico: exportação do Minhas Economias; período a verificar | Decidido / Em aberto | resposta 3, rodada 5; casal verifica o período, amostra depois | 2026-11-02 |
 | Apoio à declaração do IR | Decidido | rodada 5 | 2026-11-02 |
 | App gera relatórios de apoio, não o arquivo oficial da Receita | Decidido (consolidação) | escopo controlado | 2026-11-02 |
-| Regra de conversão de saldos no exterior para o IR | Em aberto | verificar fonte oficial (Receita) com data | 2026-11-02 |
+| Regra de conversão de saldos no exterior para o IR | Em aberto | consultado em 2026-11-03: fontes divergem (compra x venda do BCB em 31/12); PRD 010 usa cotação informada pelo casal; confirmar na Receita antes da 1ª declaração | 2026-11-03 |
 | App gera relatórios de apoio ao IR, não o arquivo oficial | Decidido | confirmado na rodada 6 | 2026-11-02 |
 | IR: despesas dedutíveis com CPF/CNPJ e paciente; bens e direitos | Decidido | resposta 1, rodada 6 | 2026-11-02 |
 | IR: declaração conjunta; filhos dependentes | Decidido | resposta 1, rodada 6 | 2026-11-02 |
