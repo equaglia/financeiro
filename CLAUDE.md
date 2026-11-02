@@ -9,8 +9,7 @@ Aplicação de controle financeiro da família. Docs em português.
 - Brainstorm concluído e consolidação validada pelo casal: `docs/brainstorm-controle-financeiro.md` (decisões, estados, pendências e a divisão em 11 PRDs na seção "Consolidação").
 - **Processo de revisão dos PRDs:** cada PRD passa por uma 1ª revisão do casal logo depois de escrito (campo `revisao` no frontmatter) e continua `rascunho` ("quase pronto"). Quando todos os 11 estiverem escritos, o casal revisa todos de novo; só então passam a `pronto`, antes da implementação.
 - PRD 001 (usuários, perfis e acesso): 1ª revisão aprovada em 2026-11-03.
-- PRD 002 (contas e cartões): 1ª revisão aprovada em 2026-11-03 (dinheiro em espécie entrou no escopo).
-- PRD 002: depois da 1ª revisão ganhou a US12 (contas administradas), aguardando revisão.
+- PRD 002 (contas e cartões): 1ª revisão aprovada em 2026-11-03 (dinheiro em espécie entrou no escopo; US12 contas administradas aprovada depois).
 - PRD 003 (lançamentos e categorias): 1ª revisão aprovada em 2026-11-03.
 - PRD 005 (migração do Minhas Economias): escrito antes do 004 (a exportação já estava em mãos); aguardando a 1ª revisão. Base: `docs/formatos/minhas-economias-exportacao.md` e `docs/categorias-iniciais.md` (proposta de agrupamento, o casal ajusta).
 - PRD 006 (investimentos e previdência): aguardando a 1ª revisão.

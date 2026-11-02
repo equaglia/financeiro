@@ -1,7 +1,7 @@
 ---
 prd_number: "002"
 status: rascunho
-revisao: "1ª revisão aprovada pelo casal em 2026-11-03, exceto US12 (contas administradas, acrescentada depois e aguardando revisão); falta a revisão final"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03 (US12 incluída); falta a revisão final"
 priority: crítica
 created: 2026-11-03
 issue: ""
@@ -219,11 +219,11 @@ Como administrador, quero registrar as contas e o dinheiro que administro para p
 
 **Rules:**
 - Uma conta pode ter como dono um **terceiro administrado** (nome do parente ou do espólio). Qualquer tipo de conta serve (corrente, investimento, dinheiro).
-- Contas administradas ficam **fora** dos relatórios, do orçamento e do patrimônio da família, numa área separada visível só ao casal *(premissa — confirme ou corrija)*.
-- Dinheiro de terceiro que **passa pela conta da família** (ex.: o espólio recebe e paga pela conta do BB): o lançamento na conta da família é uma **transferência** entre a conta da família e a conta administrada, não despesa nem receita da família *(premissa — confirme ou corrija)*. O saldo da conta administrada mostra quanto do dinheiro na conta da família é do terceiro.
-- Receitas e despesas do terceiro (ex.: rendimento do investimento do parente, custas do espólio) são lançadas na conta administrada, com categorias, e aparecem num relatório próprio dela *(premissa — confirme ou corrija)*.
+- Contas administradas ficam **fora** dos relatórios, do orçamento e do patrimônio da família, numa área separada visível só ao casal.
+- Dinheiro de terceiro que **passa pela conta da família** (ex.: o espólio recebe e paga pela conta do BB): o lançamento na conta da família é uma **transferência** entre a conta da família e a conta administrada, não despesa nem receita da família. O saldo da conta administrada mostra quanto do dinheiro na conta da família é do terceiro.
+- Receitas e despesas do terceiro (ex.: rendimento do investimento do parente, custas do espólio) são lançadas na conta administrada, com categorias, e aparecem num relatório próprio dela.
 - Dependentes não veem contas administradas.
-- No IR da família, contas administradas não entram em bens e direitos nem em despesas dedutíveis *(premissa — confirme ou corrija)*.
+- No IR da família, contas administradas não entram em bens e direitos nem em despesas dedutíveis.
 
 **Edge cases:**
 - Lançamento que mistura família e terceiro (ex.: pagamento único que cobre as duas partes) → dividido (PRD 003, US08): uma parte despesa da família, outra transferência para a conta administrada.
@@ -349,3 +349,4 @@ Antes ou depois do dia de fechamento?
 - **2026-11-03:** Revisão do casal: sempre pagam a fatura inteira (pagamento parcial vira exceção); contas da XP são de investimento, sem conta corrente; previdência com tipo de plano (só PGBL é dedutível) e participante; **dinheiro em espécie entra no escopo** como tipo de conta (US11), como no Minhas Economias; demais premissas aceitas. Status mantido em `rascunho` até a revisão final de todos os PRDs (1ª revisão aprovada).
 - **2026-11-03:** A conta de pagamento do cartão pode ser corrente ou de investimento. Motivo: os cartões da XP são da conta de investimento, já que a família não usa conta corrente na XP.
 - **2026-11-03:** Após a análise da exportação do Minhas Economias: contas PJ fora da 1ª versão; **contas administradas** para terceiros (US12), porque hoje o dinheiro do parente aparece como da família; "mesada" passa a "semanada"; dinheiro em espécie por pessoa, inclusive filhos (já coberto pela US11). US12 aguarda a 1ª revisão.
+- **2026-11-03:** 1ª revisão da US12 (contas administradas): premissas aceitas pelo casal como estão.
