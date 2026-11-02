@@ -1,7 +1,7 @@
 ---
 prd_number: "007"
 status: rascunho
-revisao: "aguardando a 1ª revisão do casal"
+revisao: "1ª revisão aprovada pelo casal em 2026-11-03; falta a revisão final"
 priority: alta
 created: 2026-11-03
 issue: ""
@@ -42,9 +42,9 @@ references:
 ### Fora do escopo
 
 - Orçamento por pessoa ou por filho; o limite do cartão adicional do filho é tratado no PRD 009.
-- Sobra de um mês acumulando para o seguinte (orçamento "envelope") *(premissa — confirme ou corrija)*.
-- Metas de poupança ou de patrimônio *(premissa — confirme ou corrija; pode virar PRD futuro)*.
-- Sugestão automática de cortes *(premissa — confirme ou corrija)*.
+- Sobra de um mês acumulando para o seguinte (orçamento "envelope").
+- Metas de poupança ou de patrimônio.
+- Sugestão automática de cortes.
 
 ## 3. Funcionalidades
 
@@ -54,7 +54,7 @@ Como administrador, quero definir quanto planejo gastar e receber em cada grupo 
 
 **Rules:**
 - O valor planejado pode ser definido no **grupo** (ex.: Alimentação) ou na **categoria** (ex.: Supermercado).
-- Se o grupo tem valor próprio e também categorias com valor, vale o do grupo como teto, e as categorias detalham; a diferença aparece como "resto do grupo" *(premissa — confirme ou corrija; alternativa: o grupo é sempre a soma das categorias)*.
+- Se o grupo tem valor próprio e também categorias com valor, vale o do grupo como teto, e as categorias detalham; a diferença aparece como "resto do grupo".
 - Receitas também podem ser planejadas (ex.: Lucros e dividendos, Rendimentos); o app mostra o **saldo planejado** do mês (receitas − despesas).
 - Categorias sem valor planejado aparecem como **sem orçamento**, com o realizado à vista.
 - Só administradores veem e editam o orçamento (PRD 001).
@@ -71,8 +71,8 @@ Como administrador, quero montar o orçamento rapidamente a partir do que já ga
 **Rules:**
 - Opções ao criar o mês: **copiar o mês anterior**; **média dos últimos 3, 6 ou 12 meses** por categoria (usa o histórico migrado, PRD 005); **em branco**.
 - **Orçamento do ano**: aplicar um valor a todos os meses do ano e marcar exceções por mês (ex.: IPTU em fevereiro, matrícula em janeiro).
-- O mês seguinte é criado automaticamente copiando o anterior, se o casal não fizer nada *(premissa — confirme ou corrija)*.
-- Valores sugeridos pela média são arredondados (ex.: para dezenas) *(premissa — confirme ou corrija)*.
+- O mês seguinte é criado automaticamente copiando o anterior, se o casal não fizer nada.
+- Valores sugeridos pela média são arredondados (ex.: para dezenas).
 
 **Edge cases:**
 - Média de categoria com gasto raro (ex.: IPTU uma vez por ano) → a média mensal confunde; o app destaca categorias com gasto concentrado em poucos meses e sugere a exceção por mês.
@@ -84,7 +84,7 @@ Como administrador, quero ver, a qualquer momento do mês, quanto já gastei, qu
 
 **Rules:**
 - Por grupo e categoria: **planejado**, **realizado** (lançamentos realizados com mês de referência no mês), **previsto** (previstos do PRD 003 ainda não realizados: parcelas, contas fixas, faturas a pagar, lançamentos futuros) e **disponível** (planejado − realizado − previsto).
-- Percentual consumido e destaque visual: dentro do planejado, perto (≥ 80 %) e estourado (> 100 %) *(premissa — confirme ou corrija os limites)*.
+- Percentual consumido e destaque visual: dentro do planejado, perto (≥ 80 %) e estourado (> 100 %).
 - Totais do mês: despesas, receitas e saldo, planejado x realizado.
 - Tocar numa categoria mostra os lançamentos que formam o realizado e o previsto.
 - Compras no cartão de faturas ainda não pagas aparecem no **previsto** do mês do vencimento, e passam a **realizado** quando a fatura é paga.
@@ -92,7 +92,7 @@ Como administrador, quero ver, a qualquer momento do mês, quanto já gastei, qu
 **Edge cases:**
 - Estorno ou devolução → reduz o realizado da categoria no mês de referência dele (PRD 003, US09).
 - Lançamento dividido em várias categorias (PRD 003, US08) → cada parte no orçamento da sua categoria.
-- Lançamento em conta em dólar (exterior) → fora do orçamento mensal *(premissa — confirme ou corrija; o exterior é controlado pelo saldo mensal, PRD 002)*.
+- Lançamento em conta em dólar (exterior) → fora do orçamento mensal.
 - Lançamentos em "A classificar" → aparecem numa linha própria, para o casal categorizar.
 
 ### US04: Avisar quando o orçamento aperta
@@ -100,7 +100,7 @@ Como administrador, quero ver, a qualquer momento do mês, quanto já gastei, qu
 Como administrador, quero ser avisado quando uma categoria chega perto ou passa do planejado, para agir no meio do mês.
 
 **Rules:**
-- Aviso no app ao chegar a **80 %** e ao passar de **100 %** do planejado da categoria ou do grupo, considerando realizado + previsto *(premissa — confirme ou corrija)*.
+- Aviso no app ao chegar a **80 %** e ao passar de **100 %** do planejado da categoria ou do grupo, considerando realizado + previsto.
 - Um aviso por limite por categoria no mês (sem repetir a cada lançamento).
 - O casal pode desligar os avisos por categoria.
 - Avisos aparecem no próximo uso do app; como a sincronização é em casa, um gasto lançado pelo outro só gera aviso depois da sincronização (PRD 011).
@@ -118,7 +118,7 @@ Como administrador, quero ver o planejado e o realizado de cada mês do ano, par
 - Tabela do ano: categorias nas linhas, meses nas colunas, planejado e realizado; total do ano por categoria e por mês.
 - Meses futuros mostram planejado e previsto.
 - Gráfico de planejado x realizado acumulado no ano.
-- Exportável para planilha *(premissa — confirme ou corrija; a família vem de uma planilha)*.
+- Exportável para planilha.
 
 **Edge cases:**
 - Ano com meses sem orçamento definido → aparecem só com o realizado.
@@ -220,3 +220,4 @@ Fim do mês: planejado x realizado na visão do ano
 - **2026-11-03:** Orçamento mensal por grupo ou categoria, com planejado, realizado e previsto. Motivo: pedido do casal (rodada 4).
 - **2026-11-03:** Realizado pelo mês de referência do PRD 003 (regime de caixa no cartão). Motivo: decisão do casal.
 - **2026-11-03:** `depends_on: ["001", "003"]`. Critério: só administradores (001); categorias, mês de referência e previstos (003). A média usa o histórico do PRD 005, mas o orçamento funciona sem ele.
+- **2026-11-03:** 1ª revisão do casal: as 10 premissas foram aceitas como estão (inclusive: valor do grupo é teto e as categorias detalham; mês novo copia o anterior; avisos a 80 % e 100 %; exterior fora do orçamento; sem sobra acumulada nem metas). Marcas removidas; status mantido em `rascunho` até a revisão final.

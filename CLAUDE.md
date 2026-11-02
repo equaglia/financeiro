@@ -13,7 +13,7 @@ Aplicação de controle financeiro da família. Docs em português.
 - PRD 003 (lançamentos e categorias): 1ª revisão aprovada em 2026-11-03.
 - PRD 005 (migração do Minhas Economias): escrito antes do 004 (a exportação já estava em mãos); 1ª revisão aprovada em 2026-11-03. Base: `docs/formatos/minhas-economias-exportacao.md` e `docs/categorias-iniciais.md` (proposta de agrupamento, o casal ajusta).
 - PRD 006 (investimentos e previdência): 1ª revisão aprovada em 2026-11-03.
-- PRD 007 (orçamento): aguardando a 1ª revisão.
+- PRD 007 (orçamento): 1ª revisão aprovada em 2026-11-03.
 - PRD 008 (relatórios e patrimônio): aguardando a 1ª revisão.
 - PRD 009 (filhos: limite e semanada): aguardando a 1ª revisão.
 - PRD 010 (apoio ao IR): aguardando a 1ª revisão. Fontes da Receita consultadas em 2026-11-03 (seção 8); limite de educação e conversão do exterior a verificar.
