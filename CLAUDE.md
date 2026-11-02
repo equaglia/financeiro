@@ -14,7 +14,8 @@ Aplicação de controle financeiro da família. Docs em português.
 - PRD 003 (lançamentos e categorias): 1ª revisão aprovada em 2026-11-03.
 - PRD 005 (migração do Minhas Economias): escrito antes do 004 (a exportação já estava em mãos); aguardando a 1ª revisão. Base: `docs/formatos/minhas-economias-exportacao.md` e `docs/categorias-iniciais.md` (proposta de agrupamento, o casal ajusta).
 - PRD 006 (investimentos e previdência): aguardando a 1ª revisão.
-- PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Sem as amostras, seguir para o 007 na ordem da consolidação.
+- PRD 007 (orçamento): aguardando a 1ª revisão.
+- PRD 004 (importação e conciliação): **próximo**, quando o casal enviar um extrato ou fatura de cada instituição (BB, Santander, XP, BBPrev, exterior). Sem as amostras, seguir para o 008 na ordem da consolidação.
 - Amostras: o casal anexa na conversa; analisar numa pasta isolada do scratchpad; **nunca gravar no repositório** (só o formato, sem nomes nem valores). Nomes de pessoas não entram nos documentos.
 
 Fluxo de documentos:
